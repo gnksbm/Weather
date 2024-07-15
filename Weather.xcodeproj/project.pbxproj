@@ -10,9 +10,11 @@
 		8E2FD6662C4281B7008F68D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FD6652C4281B7008F68D5 /* AppDelegate.swift */; };
 		8E2FD6682C4281B7008F68D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FD6672C4281B7008F68D5 /* SceneDelegate.swift */; };
 		8E2FD66A2C4281B7008F68D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FD6692C4281B7008F68D5 /* ViewController.swift */; };
-		8E2FD66D2C4281B7008F68D5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E2FD66C2C4281B7008F68D5 /* Base */; };
 		8E2FD66F2C4281B8008F68D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E2FD66E2C4281B8008F68D5 /* Assets.xcassets */; };
 		8E2FD6722C4281B8008F68D5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E2FD6712C4281B8008F68D5 /* Base */; };
+		BEC239CA2C4504400086B797 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239C92C4504400086B797 /* SnapKit */; };
+		BEC239CD2C4504600086B797 /* Neat in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CC2C4504600086B797 /* Neat */; };
+		BEC239D02C45047C0086B797 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CF2C45047C0086B797 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +22,6 @@
 		8E2FD6652C4281B7008F68D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E2FD6672C4281B7008F68D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8E2FD6692C4281B7008F68D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8E2FD66C2C4281B7008F68D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E2FD66E2C4281B8008F68D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E2FD6712C4281B8008F68D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E2FD6732C4281B8008F68D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +32,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC239D02C45047C0086B797 /* Alamofire in Frameworks */,
+				BEC239CD2C4504600086B797 /* Neat in Frameworks */,
+				BEC239CA2C4504400086B797 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +60,46 @@
 		8E2FD6642C4281B7008F68D5 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				8E2FD6652C4281B7008F68D5 /* AppDelegate.swift */,
-				8E2FD6672C4281B7008F68D5 /* SceneDelegate.swift */,
-				8E2FD6692C4281B7008F68D5 /* ViewController.swift */,
-				8E2FD66B2C4281B7008F68D5 /* Main.storyboard */,
+				BEC239C52C4503CC0086B797 /* Sources */,
+				BEC239C42C4503C40086B797 /* Resources */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		BEC239C42C4503C40086B797 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				8E2FD66E2C4281B8008F68D5 /* Assets.xcassets */,
 				8E2FD6702C4281B8008F68D5 /* LaunchScreen.storyboard */,
 				8E2FD6732C4281B8008F68D5 /* Info.plist */,
 			);
-			path = Weather;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BEC239C52C4503CC0086B797 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BEC239C72C4503DA0086B797 /* Presentation */,
+				BEC239C62C4503D50086B797 /* App */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		BEC239C62C4503D50086B797 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8E2FD6652C4281B7008F68D5 /* AppDelegate.swift */,
+				8E2FD6672C4281B7008F68D5 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BEC239C72C4503DA0086B797 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8E2FD6692C4281B7008F68D5 /* ViewController.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +118,11 @@
 			dependencies = (
 			);
 			name = Weather;
+			packageProductDependencies = (
+				BEC239C92C4504400086B797 /* SnapKit */,
+				BEC239CC2C4504600086B797 /* Neat */,
+				BEC239CF2C45047C0086B797 /* Alamofire */,
+			);
 			productName = Weather;
 			productReference = 8E2FD6622C4281B7008F68D5 /* Weather.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +151,11 @@
 				Base,
 			);
 			mainGroup = 8E2FD6592C4281B7008F68D5;
+			packageReferences = (
+				BEC239C82C4504400086B797 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				BEC239CB2C4504600086B797 /* XCRemoteSwiftPackageReference "Neat" */,
+				BEC239CE2C45047C0086B797 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 8E2FD6632C4281B7008F68D5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +172,6 @@
 			files = (
 				8E2FD66F2C4281B8008F68D5 /* Assets.xcassets in Resources */,
 				8E2FD6722C4281B8008F68D5 /* Base in Resources */,
-				8E2FD66D2C4281B7008F68D5 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +191,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8E2FD66B2C4281B7008F68D5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8E2FD66C2C4281B7008F68D5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8E2FD6702C4281B8008F68D5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,10 +330,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ASU4PNB5MG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Weather/Info.plist;
+				INFOPLIST_FILE = Weather/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,10 +357,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ASU4PNB5MG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Weather/Info.plist;
+				INFOPLIST_FILE = Weather/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -363,6 +397,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BEC239C82C4504400086B797 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		BEC239CB2C4504600086B797 /* XCRemoteSwiftPackageReference "Neat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gnksbm/Neat.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		BEC239CE2C45047C0086B797 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BEC239C92C4504400086B797 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEC239C82C4504400086B797 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		BEC239CC2C4504600086B797 /* Neat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEC239CB2C4504600086B797 /* XCRemoteSwiftPackageReference "Neat" */;
+			productName = Neat;
+		};
+		BEC239CF2C45047C0086B797 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEC239CE2C45047C0086B797 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8E2FD65A2C4281B7008F68D5 /* Project object */;
 }

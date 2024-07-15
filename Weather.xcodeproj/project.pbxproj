@@ -15,6 +15,24 @@
 		BEC239CA2C4504400086B797 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239C92C4504400086B797 /* SnapKit */; };
 		BEC239CD2C4504600086B797 /* Neat in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CC2C4504600086B797 /* Neat */; };
 		BEC239D02C45047C0086B797 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CF2C45047C0086B797 /* Alamofire */; };
+		BEC239FF2C450E840086B797 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BEC239FE2C450E840086B797 /* .gitignore */; };
+		BEC23A192C45131B0086B797 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A002C45131A0086B797 /* View.swift */; };
+		BEC23A1A2C45131B0086B797 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A012C45131A0086B797 /* ViewModel.swift */; };
+		BEC23A1B2C45131B0086B797 /* ViewModelStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A022C45131A0086B797 /* ViewModelStorage.swift */; };
+		BEC23A1C2C45131B0086B797 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A042C45131A0086B797 /* BaseCollectionViewCell.swift */; };
+		BEC23A1D2C45131B0086B797 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A052C45131A0086B797 /* BaseTableViewCell.swift */; };
+		BEC23A1E2C45131B0086B797 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A062C45131A0086B797 /* BaseView.swift */; };
+		BEC23A1F2C45131B0086B797 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A072C45131A0086B797 /* BaseViewController.swift */; };
+		BEC23A202C45131B0086B797 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A092C45131A0086B797 /* Logger.swift */; };
+		BEC23A212C45131B0086B797 /* EndpointError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A0B2C45131A0086B797 /* EndpointError.swift */; };
+		BEC23A222C45131B0086B797 /* EndpointRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A0C2C45131A0086B797 /* EndpointRepresentable.swift */; };
+		BEC23A232C45131B0086B797 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A0E2C45131A0086B797 /* String+.swift */; };
+		BEC23A242C45131B0086B797 /* DeinitHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A102C45131A0086B797 /* DeinitHandler.swift */; };
+		BEC23A252C45131B0086B797 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A112C45131A0086B797 /* Weak.swift */; };
+		BEC23A262C45131B0086B797 /* WeakStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A122C45131A0086B797 /* WeakStorage.swift */; };
+		BEC23A272C45131B0086B797 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A142C45131A0086B797 /* DateFormat.swift */; };
+		BEC23A282C45131B0086B797 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A152C45131A0086B797 /* Observable.swift */; };
+		BEC23A292C45131B0086B797 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A162C45131A0086B797 /* ReuseIdentifiable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +43,24 @@
 		8E2FD66E2C4281B8008F68D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E2FD6712C4281B8008F68D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E2FD6732C4281B8008F68D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEC239FE2C450E840086B797 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		BEC23A002C45131A0086B797 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		BEC23A012C45131A0086B797 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		BEC23A022C45131A0086B797 /* ViewModelStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelStorage.swift; sourceTree = "<group>"; };
+		BEC23A042C45131A0086B797 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		BEC23A052C45131A0086B797 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		BEC23A062C45131A0086B797 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		BEC23A072C45131A0086B797 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BEC23A092C45131A0086B797 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		BEC23A0B2C45131A0086B797 /* EndpointError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointError.swift; sourceTree = "<group>"; };
+		BEC23A0C2C45131A0086B797 /* EndpointRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointRepresentable.swift; sourceTree = "<group>"; };
+		BEC23A0E2C45131A0086B797 /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		BEC23A102C45131A0086B797 /* DeinitHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeinitHandler.swift; sourceTree = "<group>"; };
+		BEC23A112C45131A0086B797 /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
+		BEC23A122C45131A0086B797 /* WeakStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakStorage.swift; sourceTree = "<group>"; };
+		BEC23A142C45131A0086B797 /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
+		BEC23A152C45131A0086B797 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		BEC23A162C45131A0086B797 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +80,7 @@
 		8E2FD6592C4281B7008F68D5 = {
 			isa = PBXGroup;
 			children = (
+				BEC239FE2C450E840086B797 /* .gitignore */,
 				8E2FD6642C4281B7008F68D5 /* Weather */,
 				8E2FD6632C4281B7008F68D5 /* Products */,
 			);
@@ -79,8 +116,10 @@
 		BEC239C52C4503CC0086B797 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BEC239C72C4503DA0086B797 /* Presentation */,
 				BEC239C62C4503D50086B797 /* App */,
+				BEC23A182C45131B0086B797 /* Data */,
+				BEC23A172C45131A0086B797 /* Foundation */,
+				BEC239C72C4503DA0086B797 /* Presentation */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -100,6 +139,85 @@
 				8E2FD6692C4281B7008F68D5 /* ViewController.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		BEC23A032C45131A0086B797 /* Architecture */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A002C45131A0086B797 /* View.swift */,
+				BEC23A012C45131A0086B797 /* ViewModel.swift */,
+				BEC23A022C45131A0086B797 /* ViewModelStorage.swift */,
+			);
+			path = Architecture;
+			sourceTree = "<group>";
+		};
+		BEC23A082C45131A0086B797 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A042C45131A0086B797 /* BaseCollectionViewCell.swift */,
+				BEC23A052C45131A0086B797 /* BaseTableViewCell.swift */,
+				BEC23A062C45131A0086B797 /* BaseView.swift */,
+				BEC23A072C45131A0086B797 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BEC23A0A2C45131A0086B797 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A092C45131A0086B797 /* Logger.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		BEC23A0D2C45131A0086B797 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A0B2C45131A0086B797 /* EndpointError.swift */,
+				BEC23A0C2C45131A0086B797 /* EndpointRepresentable.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		BEC23A0F2C45131A0086B797 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A0E2C45131A0086B797 /* String+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		BEC23A132C45131A0086B797 /* Weak */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A102C45131A0086B797 /* DeinitHandler.swift */,
+				BEC23A112C45131A0086B797 /* Weak.swift */,
+				BEC23A122C45131A0086B797 /* WeakStorage.swift */,
+			);
+			path = Weak;
+			sourceTree = "<group>";
+		};
+		BEC23A172C45131A0086B797 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A032C45131A0086B797 /* Architecture */,
+				BEC23A082C45131A0086B797 /* Base */,
+				BEC23A0A2C45131A0086B797 /* Debug */,
+				BEC23A0D2C45131A0086B797 /* Endpoint */,
+				BEC23A0F2C45131A0086B797 /* Extension */,
+				BEC23A132C45131A0086B797 /* Weak */,
+				BEC23A142C45131A0086B797 /* DateFormat.swift */,
+				BEC23A152C45131A0086B797 /* Observable.swift */,
+				BEC23A162C45131A0086B797 /* ReuseIdentifiable.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		BEC23A182C45131B0086B797 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E2FD66F2C4281B8008F68D5 /* Assets.xcassets in Resources */,
+				BEC239FF2C450E840086B797 /* .gitignore in Resources */,
 				8E2FD6722C4281B8008F68D5 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,8 +301,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC23A282C45131B0086B797 /* Observable.swift in Sources */,
+				BEC23A1D2C45131B0086B797 /* BaseTableViewCell.swift in Sources */,
+				BEC23A202C45131B0086B797 /* Logger.swift in Sources */,
+				BEC23A262C45131B0086B797 /* WeakStorage.swift in Sources */,
+				BEC23A1A2C45131B0086B797 /* ViewModel.swift in Sources */,
+				BEC23A222C45131B0086B797 /* EndpointRepresentable.swift in Sources */,
+				BEC23A292C45131B0086B797 /* ReuseIdentifiable.swift in Sources */,
+				BEC23A1C2C45131B0086B797 /* BaseCollectionViewCell.swift in Sources */,
+				BEC23A192C45131B0086B797 /* View.swift in Sources */,
 				8E2FD66A2C4281B7008F68D5 /* ViewController.swift in Sources */,
+				BEC23A272C45131B0086B797 /* DateFormat.swift in Sources */,
+				BEC23A1F2C45131B0086B797 /* BaseViewController.swift in Sources */,
+				BEC23A242C45131B0086B797 /* DeinitHandler.swift in Sources */,
 				8E2FD6662C4281B7008F68D5 /* AppDelegate.swift in Sources */,
+				BEC23A1E2C45131B0086B797 /* BaseView.swift in Sources */,
+				BEC23A212C45131B0086B797 /* EndpointError.swift in Sources */,
+				BEC23A1B2C45131B0086B797 /* ViewModelStorage.swift in Sources */,
+				BEC23A252C45131B0086B797 /* Weak.swift in Sources */,
+				BEC23A232C45131B0086B797 /* String+.swift in Sources */,
 				8E2FD6682C4281B7008F68D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

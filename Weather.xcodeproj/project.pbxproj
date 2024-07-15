@@ -33,6 +33,13 @@
 		BEC23A272C45131B0086B797 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A142C45131A0086B797 /* DateFormat.swift */; };
 		BEC23A282C45131B0086B797 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A152C45131A0086B797 /* Observable.swift */; };
 		BEC23A292C45131B0086B797 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A162C45131A0086B797 /* ReuseIdentifiable.swift */; };
+		BEC23A2B2C4513510086B797 /* CurrentWeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A2A2C4513510086B797 /* CurrentWeatherEndpoint.swift */; };
+		BEC23A2D2C4514440086B797 /* OpenWeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A2C2C4514440086B797 /* OpenWeatherEndpoint.swift */; };
+		BEC23A302C45178D0086B797 /* ForecastWeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A2F2C45178D0086B797 /* ForecastWeatherEndpoint.swift */; };
+		BEC23A342C45187D0086B797 /* OWLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A332C45187D0086B797 /* OWLocationRequest.swift */; };
+		BEC23A362C45188D0086B797 /* OpenWeatherLocationEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A352C45188D0086B797 /* OpenWeatherLocationEndpoint.swift */; };
+		BEC23A392C4519250086B797 /* CurrentWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A382C4519250086B797 /* CurrentWeatherResponse.swift */; };
+		BEC23A3B2C451ACE0086B797 /* ForecastWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A3A2C451ACE0086B797 /* ForecastWeatherResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +68,14 @@
 		BEC23A142C45131A0086B797 /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		BEC23A152C45131A0086B797 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		BEC23A162C45131A0086B797 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
+		BEC23A2A2C4513510086B797 /* CurrentWeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherEndpoint.swift; sourceTree = "<group>"; };
+		BEC23A2C2C4514440086B797 /* OpenWeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherEndpoint.swift; sourceTree = "<group>"; };
+		BEC23A2E2C4515550086B797 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		BEC23A2F2C45178D0086B797 /* ForecastWeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherEndpoint.swift; sourceTree = "<group>"; };
+		BEC23A332C45187D0086B797 /* OWLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWLocationRequest.swift; sourceTree = "<group>"; };
+		BEC23A352C45188D0086B797 /* OpenWeatherLocationEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherLocationEndpoint.swift; sourceTree = "<group>"; };
+		BEC23A382C4519250086B797 /* CurrentWeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherResponse.swift; sourceTree = "<group>"; };
+		BEC23A3A2C451ACE0086B797 /* ForecastWeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +124,7 @@
 				8E2FD66E2C4281B8008F68D5 /* Assets.xcassets */,
 				8E2FD6702C4281B8008F68D5 /* LaunchScreen.storyboard */,
 				8E2FD6732C4281B8008F68D5 /* Info.plist */,
+				BEC23A2E2C4515550086B797 /* Debug.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -216,8 +232,39 @@
 		BEC23A182C45131B0086B797 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				BEC23A312C4518660086B797 /* Endpoint */,
+				BEC23A322C4518730086B797 /* Request */,
+				BEC23A372C4519060086B797 /* Response */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		BEC23A312C4518660086B797 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A2A2C4513510086B797 /* CurrentWeatherEndpoint.swift */,
+				BEC23A2F2C45178D0086B797 /* ForecastWeatherEndpoint.swift */,
+				BEC23A2C2C4514440086B797 /* OpenWeatherEndpoint.swift */,
+				BEC23A352C45188D0086B797 /* OpenWeatherLocationEndpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		BEC23A322C4518730086B797 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A332C45187D0086B797 /* OWLocationRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		BEC23A372C4519060086B797 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A382C4519250086B797 /* CurrentWeatherResponse.swift */,
+				BEC23A3A2C451ACE0086B797 /* ForecastWeatherResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,10 +348,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC23A2B2C4513510086B797 /* CurrentWeatherEndpoint.swift in Sources */,
 				BEC23A282C45131B0086B797 /* Observable.swift in Sources */,
+				BEC23A342C45187D0086B797 /* OWLocationRequest.swift in Sources */,
 				BEC23A1D2C45131B0086B797 /* BaseTableViewCell.swift in Sources */,
 				BEC23A202C45131B0086B797 /* Logger.swift in Sources */,
 				BEC23A262C45131B0086B797 /* WeakStorage.swift in Sources */,
+				BEC23A2D2C4514440086B797 /* OpenWeatherEndpoint.swift in Sources */,
+				BEC23A392C4519250086B797 /* CurrentWeatherResponse.swift in Sources */,
 				BEC23A1A2C45131B0086B797 /* ViewModel.swift in Sources */,
 				BEC23A222C45131B0086B797 /* EndpointRepresentable.swift in Sources */,
 				BEC23A292C45131B0086B797 /* ReuseIdentifiable.swift in Sources */,
@@ -313,6 +364,7 @@
 				8E2FD66A2C4281B7008F68D5 /* ViewController.swift in Sources */,
 				BEC23A272C45131B0086B797 /* DateFormat.swift in Sources */,
 				BEC23A1F2C45131B0086B797 /* BaseViewController.swift in Sources */,
+				BEC23A302C45178D0086B797 /* ForecastWeatherEndpoint.swift in Sources */,
 				BEC23A242C45131B0086B797 /* DeinitHandler.swift in Sources */,
 				8E2FD6662C4281B7008F68D5 /* AppDelegate.swift in Sources */,
 				BEC23A1E2C45131B0086B797 /* BaseView.swift in Sources */,
@@ -320,6 +372,8 @@
 				BEC23A1B2C45131B0086B797 /* ViewModelStorage.swift in Sources */,
 				BEC23A252C45131B0086B797 /* Weak.swift in Sources */,
 				BEC23A232C45131B0086B797 /* String+.swift in Sources */,
+				BEC23A3B2C451ACE0086B797 /* ForecastWeatherResponse.swift in Sources */,
+				BEC23A362C45188D0086B797 /* OpenWeatherLocationEndpoint.swift in Sources */,
 				8E2FD6682C4281B7008F68D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +394,7 @@
 /* Begin XCBuildConfiguration section */
 		8E2FD6742C4281B8008F68D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEC23A2E2C4515550086B797 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

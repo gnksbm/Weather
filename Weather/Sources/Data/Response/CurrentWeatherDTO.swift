@@ -1,5 +1,5 @@
 //
-//  CurrentWeatherResponse.swift
+//  CurrentWeatherDTO.swift
 //  Weather
 //
 //  Created by gnksbm on 7/15/24.
@@ -9,7 +9,7 @@ import Foundation
 
 import Foundation
 
-struct CurrentWeatherResponse: Decodable {
+struct CurrentWeatherDTO: Decodable {
     let coord: Coord
     let weather: [Weather]
     let base: String
@@ -27,7 +27,29 @@ struct CurrentWeatherResponse: Decodable {
     let cod: Int
 }
 
-extension CurrentWeatherResponse {
+extension CurrentWeatherDTO {
+    func toLocationItem(
+    ) -> WeatherSummaryViewController.CollectionViewItem {
+        .location(
+            WeatherSummaryViewController.CollectionViewItem.WeatherLocationInfo(
+                latitude: coord.lat,
+                longitude: coord.lon
+            )
+        )
+    }
+    
+    func toWeatherConditionItem(
+    ) -> [WeatherSummaryViewController.CollectionViewItem] {
+        [
+            .weatherConditions(.windSpeed(wind.speed)),
+            .weatherConditions(.cloud(clouds.all)),
+            .weatherConditions(.pressure(main.pressure)),
+            .weatherConditions(.humidity(main.humidity)),
+        ]
+    }
+}
+
+extension CurrentWeatherDTO {
     struct Coord: Decodable {
         let lon: Double
         let lat: Double

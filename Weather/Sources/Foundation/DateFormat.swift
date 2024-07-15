@@ -8,8 +8,9 @@
 import Foundation
 
 enum DateFormat: String {
-    case temp = "yyyy.MM.dd (E)"
+    case dayOfWeek = "E"
 }
+
 extension DateFormat {
     private static var cachedStorage = [DateFormat: DateFormatter]()
     

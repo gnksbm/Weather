@@ -1,5 +1,5 @@
 //
-//  ForecastWeatherResponse.swift
+//  ForecastWeatherDTO.swift
 //  Weather
 //
 //  Created by gnksbm on 7/15/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ForecastResponse: Decodable {
+struct ForecastWeatherDTO: Decodable {
     let cod: String
     let message: Int
     let cnt: Int
@@ -15,7 +15,37 @@ struct ForecastResponse: Decodable {
     let city: City
 }
 
-extension ForecastResponse {
+extension ForecastWeatherDTO {
+    func toThreeHourItem(
+    ) -> [WeatherSummaryViewController.CollectionViewItem] {
+        list.map { forecast in
+            return .threeHours(
+                WeatherSummaryViewController.CollectionViewItem.ThreeHourForecast(
+                    time: forecast.date,
+                    icon: forecast.iconRequest,
+                    temperature: forecast.main.temp
+                )
+            )
+        }
+    }
+    
+    func toFiveDaysItem(
+    ) -> [WeatherSummaryViewController.CollectionViewItem] {
+        list.map { forecast in
+            return .fiveDays(
+                WeatherSummaryViewController.CollectionViewItem.FiveDayForecast(
+                    dayOfWeek: forecast.date.isToday ?
+                    "오늘" : forecast.date.formatted(dateFormat: .dayOfWeek),
+                    icon: forecast.iconRequest,
+                    minTemperature: forecast.main.tempMin,
+                    maxTemperature: forecast.main.tempMax
+                )
+            )
+        }
+    }
+}
+
+extension ForecastWeatherDTO {
     struct Forecast: Decodable {
         let dt: Int
         let main: MainClass
@@ -28,6 +58,20 @@ extension ForecastResponse {
         let snow: Snow?
         let sys: Sys
         let dtTxt: String
+        
+        var iconRequest: OpenWeatherIconRequest {
+            var dic = [String: Int]()
+            weather.forEach { dic[$0.icon, default: 0] += 1 }
+            let iconCode =
+            dic.sorted { $0.value > $1.value }.first?.key ?? "01n"
+            return OpenWeatherIconRequest(
+                iconCode: iconCode
+            )
+        }
+        
+        var date: Date {
+            Date(timeIntervalSince1970: TimeInterval(dt))
+        }
         
         enum CodingKeys: String, CodingKey {
             case dt, main, weather, clouds, wind, visibility, pop, rain, snow, sys

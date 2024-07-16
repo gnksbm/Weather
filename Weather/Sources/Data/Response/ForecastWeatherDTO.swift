@@ -22,7 +22,7 @@ extension ForecastWeatherDTO {
             return .threeHours(
                 WeatherSummaryViewController.CollectionViewItem.ThreeHourForecast(
                     time: forecast.date,
-                    icon: forecast.iconRequest,
+                    iconRequest: forecast.iconRequest,
                     temperature: forecast.main.temp
                 )
             )
@@ -35,8 +35,8 @@ extension ForecastWeatherDTO {
             return .fiveDays(
                 WeatherSummaryViewController.CollectionViewItem.FiveDayForecast(
                     dayOfWeek: forecast.date.isToday ?
-                    "오늘" : forecast.date.formatted(dateFormat: .dayOfWeek),
-                    icon: forecast.iconRequest,
+                    "오늘" : forecast.date.formatted(dateFormat: .onlyDayOfWeek),
+                    iconRequest: forecast.iconRequest,
                     minTemperature: forecast.main.tempMin,
                     maxTemperature: forecast.main.tempMax
                 )

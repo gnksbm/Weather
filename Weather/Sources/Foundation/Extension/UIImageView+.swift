@@ -104,4 +104,13 @@ extension UIImageView {
         task.resume()
         return task
     }
+    
+    @discardableResult
+    func setImageWithCahe(
+        with endpoint: EndpointRepresentable,
+        config: CacheConfiguration = .default
+    ) -> URLSessionTask? {
+        guard let url = endpoint.toURL() else { return nil }
+        return setImageWithCahe(with: url, config: config)
+    }
 }

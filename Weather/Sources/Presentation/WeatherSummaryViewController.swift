@@ -53,7 +53,6 @@ extension WeatherSummaryViewController {
             case .weatherConditions:
                 weatherConditionsSection
             }
-//            let horizontalInset = sectionKind == .weatherConditions ? -5.f : 0
             section.contentInsets = NSDirectionalEdgeInsets(
                 top: 10,
                 leading: 0,
@@ -187,8 +186,10 @@ extension WeatherSummaryViewController {
     }
     
     private func makeThreeHoursRegistration() -> ThreeHoursRegistration {
-        ThreeHoursRegistration { cell, indexPath, itemIdentifier in
-            
+        ThreeHoursRegistration { cell, indexPath, cellData in
+            if case .threeHours(let item) = cellData {
+                cell.configureCell(item: item)
+            }
         }
     }
     
@@ -240,13 +241,17 @@ extension WeatherSummaryViewController {
         
         struct ThreeHourForecast: Hashable {
             let time: Date
-            let icon: OpenWeatherIconRequest
+            let iconRequest: OpenWeatherIconRequest
             let temperature: Double
+            
+            var iconEndpoint: OpenWeatherIconEndpoint {
+                OpenWeatherIconEndpoint(request: iconRequest)
+            }
         }
 
         struct FiveDayForecast: Hashable {
             let dayOfWeek: String
-            let icon: OpenWeatherIconRequest
+            let iconRequest: OpenWeatherIconRequest
             let minTemperature: Double
             let maxTemperature: Double
         }
@@ -290,77 +295,77 @@ extension WeatherSummaryViewController.CollectionViewDataSource {
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
                 .threeHours(
                     .init(
                         time: .now,
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         temperature: .random(in: 0...1)
                     )
                 ),
@@ -372,7 +377,7 @@ extension WeatherSummaryViewController.CollectionViewDataSource {
                 .fiveDays(
                     .init(
                         dayOfWeek: "",
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         minTemperature: .random(in: 0...1),
                         maxTemperature: .random(in: 0...1)
                     )
@@ -380,7 +385,7 @@ extension WeatherSummaryViewController.CollectionViewDataSource {
                 .fiveDays(
                     .init(
                         dayOfWeek: "",
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         minTemperature: .random(in: 0...1),
                         maxTemperature: .random(in: 0...1)
                     )
@@ -388,7 +393,7 @@ extension WeatherSummaryViewController.CollectionViewDataSource {
                 .fiveDays(
                     .init(
                         dayOfWeek: "",
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         minTemperature: .random(in: 0...1),
                         maxTemperature: .random(in: 0...1)
                     )
@@ -396,7 +401,7 @@ extension WeatherSummaryViewController.CollectionViewDataSource {
                 .fiveDays(
                     .init(
                         dayOfWeek: "",
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         minTemperature: .random(in: 0...1),
                         maxTemperature: .random(in: 0...1)
                     )
@@ -404,7 +409,7 @@ extension WeatherSummaryViewController.CollectionViewDataSource {
                 .fiveDays(
                     .init(
                         dayOfWeek: "",
-                        icon: OpenWeatherIconRequest(iconCode: ""),
+                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         minTemperature: .random(in: 0...1),
                         maxTemperature: .random(in: 0...1)
                     )

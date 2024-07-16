@@ -8,7 +8,8 @@
 import Foundation
 
 enum DateFormat: String {
-    case dayOfWeek = "E"
+    case onlyTime = "HH"
+    case onlyDayOfWeek = "E"
 }
 
 extension DateFormat {

@@ -57,6 +57,9 @@
 		BEC23A6B2C467F340086B797 /* DataSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A642C467F340086B797 /* DataSize.swift */; };
 		BEC23A6D2C467F940086B797 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A6C2C467F940086B797 /* UIImageView+.swift */; };
 		BEC23A702C467FD60086B797 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A6F2C467FD60086B797 /* NetworkError.swift */; };
+		BEC23A722C46849D0086B797 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A712C46849D0086B797 /* UIFont+.swift */; };
+		BEC23A742C4685100086B797 /* FloatLiteralType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A732C4685100086B797 /* FloatLiteralType+.swift */; };
+		BEC23A772C4686380086B797 /* WTDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A762C4686380086B797 /* WTDesign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +113,9 @@
 		BEC23A642C467F340086B797 /* DataSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSize.swift; sourceTree = "<group>"; };
 		BEC23A6C2C467F940086B797 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		BEC23A6F2C467FD60086B797 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		BEC23A712C46849D0086B797 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		BEC23A732C4685100086B797 /* FloatLiteralType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatLiteralType+.swift"; sourceTree = "<group>"; };
+		BEC23A762C4686380086B797 /* WTDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTDesign.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +174,7 @@
 			children = (
 				BEC239C62C4503D50086B797 /* App */,
 				BEC23A182C45131B0086B797 /* Data */,
+				BEC23A752C46862C0086B797 /* Design */,
 				BEC23A172C45131A0086B797 /* Foundation */,
 				BEC239C72C4503DA0086B797 /* Presentation */,
 			);
@@ -237,7 +244,9 @@
 				BEC23A452C454F850086B797 /* Date+.swift */,
 				BEC23A502C4559530086B797 /* NSDirectionalEdgeInsets+.swift */,
 				BEC23A522C45599F0086B797 /* IntegerLiteralType+.swift */,
+				BEC23A732C4685100086B797 /* FloatLiteralType+.swift */,
 				BEC23A6C2C467F940086B797 /* UIImageView+.swift */,
+				BEC23A712C46849D0086B797 /* UIFont+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -340,6 +349,14 @@
 				BEC23A6F2C467FD60086B797 /* NetworkError.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		BEC23A752C46862C0086B797 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A762C4686380086B797 /* WTDesign.swift */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +464,7 @@
 				BEC23A1C2C45131B0086B797 /* BaseCollectionViewCell.swift in Sources */,
 				BEC23A192C45131B0086B797 /* View.swift in Sources */,
 				BEC23A272C45131B0086B797 /* DateFormat.swift in Sources */,
+				BEC23A772C4686380086B797 /* WTDesign.swift in Sources */,
 				BEC23A692C467F340086B797 /* CacheStorage.swift in Sources */,
 				BEC23A1F2C45131B0086B797 /* BaseViewController.swift in Sources */,
 				BEC23A302C45178D0086B797 /* ForecastWeatherEndpoint.swift in Sources */,
@@ -455,11 +473,13 @@
 				BEC23A532C45599F0086B797 /* IntegerLiteralType+.swift in Sources */,
 				BEC23A6D2C467F940086B797 /* UIImageView+.swift in Sources */,
 				8E2FD6662C4281B7008F68D5 /* AppDelegate.swift in Sources */,
+				BEC23A742C4685100086B797 /* FloatLiteralType+.swift in Sources */,
 				BEC23A1E2C45131B0086B797 /* BaseView.swift in Sources */,
 				BEC23A212C45131B0086B797 /* EndpointError.swift in Sources */,
 				BEC23A6B2C467F340086B797 /* DataSize.swift in Sources */,
 				BEC23A1B2C45131B0086B797 /* ViewModelStorage.swift in Sources */,
 				BEC23A252C45131B0086B797 /* Weak.swift in Sources */,
+				BEC23A722C46849D0086B797 /* UIFont+.swift in Sources */,
 				BEC23A232C45131B0086B797 /* String+.swift in Sources */,
 				BEC23A3B2C451ACE0086B797 /* ForecastWeatherDTO.swift in Sources */,
 				BEC23A662C467F340086B797 /* CacheableObject.swift in Sources */,

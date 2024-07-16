@@ -49,6 +49,14 @@
 		BEC23A4F2C4556720086B797 /* WeatherConditionCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A4E2C4556720086B797 /* WeatherConditionCVCell.swift */; };
 		BEC23A512C4559530086B797 /* NSDirectionalEdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A502C4559530086B797 /* NSDirectionalEdgeInsets+.swift */; };
 		BEC23A532C45599F0086B797 /* IntegerLiteralType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A522C45599F0086B797 /* IntegerLiteralType+.swift */; };
+		BEC23A662C467F340086B797 /* CacheableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A5F2C467F340086B797 /* CacheableObject.swift */; };
+		BEC23A672C467F340086B797 /* CacheConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A602C467F340086B797 /* CacheConfiguration.swift */; };
+		BEC23A682C467F340086B797 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A612C467F340086B797 /* CacheService.swift */; };
+		BEC23A692C467F340086B797 /* CacheStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A622C467F340086B797 /* CacheStorage.swift */; };
+		BEC23A6A2C467F340086B797 /* CacheWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A632C467F340086B797 /* CacheWrapper.swift */; };
+		BEC23A6B2C467F340086B797 /* DataSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A642C467F340086B797 /* DataSize.swift */; };
+		BEC23A6D2C467F940086B797 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A6C2C467F940086B797 /* UIImageView+.swift */; };
+		BEC23A702C467FD60086B797 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC23A6F2C467FD60086B797 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +102,14 @@
 		BEC23A4E2C4556720086B797 /* WeatherConditionCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConditionCVCell.swift; sourceTree = "<group>"; };
 		BEC23A502C4559530086B797 /* NSDirectionalEdgeInsets+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+.swift"; sourceTree = "<group>"; };
 		BEC23A522C45599F0086B797 /* IntegerLiteralType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntegerLiteralType+.swift"; sourceTree = "<group>"; };
+		BEC23A5F2C467F340086B797 /* CacheableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheableObject.swift; sourceTree = "<group>"; };
+		BEC23A602C467F340086B797 /* CacheConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheConfiguration.swift; sourceTree = "<group>"; };
+		BEC23A612C467F340086B797 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		BEC23A622C467F340086B797 /* CacheStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheStorage.swift; sourceTree = "<group>"; };
+		BEC23A632C467F340086B797 /* CacheWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheWrapper.swift; sourceTree = "<group>"; };
+		BEC23A642C467F340086B797 /* DataSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSize.swift; sourceTree = "<group>"; };
+		BEC23A6C2C467F940086B797 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		BEC23A6F2C467FD60086B797 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +237,7 @@
 				BEC23A452C454F850086B797 /* Date+.swift */,
 				BEC23A502C4559530086B797 /* NSDirectionalEdgeInsets+.swift */,
 				BEC23A522C45599F0086B797 /* IntegerLiteralType+.swift */,
+				BEC23A6C2C467F940086B797 /* UIImageView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -243,9 +260,11 @@
 				BEC23A162C45131A0086B797 /* ReuseIdentifiable.swift */,
 				BEC23A032C45131A0086B797 /* Architecture */,
 				BEC23A082C45131A0086B797 /* Base */,
+				BEC23A652C467F340086B797 /* Cache */,
 				BEC23A0A2C45131A0086B797 /* Debug */,
 				BEC23A0D2C45131A0086B797 /* Endpoint */,
 				BEC23A0F2C45131A0086B797 /* Extension */,
+				BEC23A6E2C467FCB0086B797 /* Network */,
 				BEC23A132C45131A0086B797 /* Weak */,
 			);
 			path = Foundation;
@@ -300,6 +319,27 @@
 				BEC23A4E2C4556720086B797 /* WeatherConditionCVCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		BEC23A652C467F340086B797 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A5F2C467F340086B797 /* CacheableObject.swift */,
+				BEC23A602C467F340086B797 /* CacheConfiguration.swift */,
+				BEC23A612C467F340086B797 /* CacheService.swift */,
+				BEC23A622C467F340086B797 /* CacheStorage.swift */,
+				BEC23A632C467F340086B797 /* CacheWrapper.swift */,
+				BEC23A642C467F340086B797 /* DataSize.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		BEC23A6E2C467FCB0086B797 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BEC23A6F2C467FD60086B797 /* NetworkError.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,11 +425,14 @@
 			files = (
 				BEC23A2B2C4513510086B797 /* CurrentWeatherEndpoint.swift in Sources */,
 				BEC23A282C45131B0086B797 /* Observable.swift in Sources */,
+				BEC23A6A2C467F340086B797 /* CacheWrapper.swift in Sources */,
 				BEC23A4D2C4556580086B797 /* WeatherLocationCVCell.swift in Sources */,
 				BEC23A4B2C4555D80086B797 /* FiveDaysForecastCVCell.swift in Sources */,
 				BEC23A3D2C4542C20086B797 /* WeatherSummaryViewController.swift in Sources */,
 				BEC23A342C45187D0086B797 /* OWLocationRequest.swift in Sources */,
 				BEC23A492C4554280086B797 /* ThreeHoursForecastCVCell.swift in Sources */,
+				BEC23A672C467F340086B797 /* CacheConfiguration.swift in Sources */,
+				BEC23A702C467FD60086B797 /* NetworkError.swift in Sources */,
 				BEC23A1D2C45131B0086B797 /* BaseTableViewCell.swift in Sources */,
 				BEC23A202C45131B0086B797 /* Logger.swift in Sources */,
 				BEC23A262C45131B0086B797 /* WeakStorage.swift in Sources */,
@@ -404,17 +447,22 @@
 				BEC23A1C2C45131B0086B797 /* BaseCollectionViewCell.swift in Sources */,
 				BEC23A192C45131B0086B797 /* View.swift in Sources */,
 				BEC23A272C45131B0086B797 /* DateFormat.swift in Sources */,
+				BEC23A692C467F340086B797 /* CacheStorage.swift in Sources */,
 				BEC23A1F2C45131B0086B797 /* BaseViewController.swift in Sources */,
 				BEC23A302C45178D0086B797 /* ForecastWeatherEndpoint.swift in Sources */,
 				BEC23A242C45131B0086B797 /* DeinitHandler.swift in Sources */,
+				BEC23A682C467F340086B797 /* CacheService.swift in Sources */,
 				BEC23A532C45599F0086B797 /* IntegerLiteralType+.swift in Sources */,
+				BEC23A6D2C467F940086B797 /* UIImageView+.swift in Sources */,
 				8E2FD6662C4281B7008F68D5 /* AppDelegate.swift in Sources */,
 				BEC23A1E2C45131B0086B797 /* BaseView.swift in Sources */,
 				BEC23A212C45131B0086B797 /* EndpointError.swift in Sources */,
+				BEC23A6B2C467F340086B797 /* DataSize.swift in Sources */,
 				BEC23A1B2C45131B0086B797 /* ViewModelStorage.swift in Sources */,
 				BEC23A252C45131B0086B797 /* Weak.swift in Sources */,
 				BEC23A232C45131B0086B797 /* String+.swift in Sources */,
 				BEC23A3B2C451ACE0086B797 /* ForecastWeatherDTO.swift in Sources */,
+				BEC23A662C467F340086B797 /* CacheableObject.swift in Sources */,
 				BEC23A462C454F850086B797 /* Date+.swift in Sources */,
 				BEC23A512C4559530086B797 /* NSDirectionalEdgeInsets+.swift in Sources */,
 				BEC23A362C45188D0086B797 /* OpenWeatherLocationEndpoint.swift in Sources */,

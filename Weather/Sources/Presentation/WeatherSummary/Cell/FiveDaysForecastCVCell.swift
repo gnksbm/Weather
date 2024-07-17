@@ -82,14 +82,14 @@ final class FiveDaysForecastCVCell: BaseCollectionViewCell {
         minTempLabel.snp.makeConstraints { make in
             make.centerY.equalTo(contentView)
             make.leading.equalTo(iconImageView.snp.trailing).offset(spacing)
-            make.width.equalTo(contentView).multipliedBy(0.25)
+            make.width.equalTo(contentView).multipliedBy(0.3)
         }
         
         maxTempLabel.snp.makeConstraints { make in
             make.centerY.equalTo(contentView)
             make.leading.equalTo(minTempLabel.snp.trailing).offset(spacing)
             make.trailing.equalTo(contentView).inset(spacing)
-            make.width.equalTo(contentView).multipliedBy(0.25)
+            make.width.equalTo(contentView).multipliedBy(0.3)
         }
     }
 }

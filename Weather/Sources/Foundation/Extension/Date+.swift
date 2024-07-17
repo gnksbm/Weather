@@ -9,6 +9,8 @@ import Foundation
 
 extension Date {
     var isToday: Bool {
-        Calendar.current.isDateInToday(self)
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(identifier: "KST") ?? .current
+        return calendar.isDateInToday(self)
     }
 }

@@ -24,7 +24,7 @@ extension ForecastWeatherDTO {
                     .ThreeHourForecast(
                     time: forecast.date,
                     iconRequest: forecast.iconRequest,
-                    temperature: forecast.main.temp
+                    temperature: forecast.main.temp.kelvinToCelsius()
                 )
             )
         }
@@ -38,8 +38,8 @@ extension ForecastWeatherDTO {
                     dayOfWeek: forecast.date.isToday ?
                     "오늘" : forecast.date.formatted(dateFormat: .onlyDayOfWeek),
                     iconRequest: forecast.iconRequest,
-                    minTemperature: forecast.main.tempMin,
-                    maxTemperature: forecast.main.tempMax
+                    minTemperature: forecast.main.tempMin.kelvinToCelsius(),
+                    maxTemperature: forecast.main.tempMax.kelvinToCelsius()
                 )
             )
         }
@@ -75,7 +75,8 @@ extension ForecastWeatherDTO {
         }
         
         enum CodingKeys: String, CodingKey {
-            case dt, main, weather, clouds, wind, visibility, pop, rain, snow, sys
+            case dt, main, weather, clouds, wind, visibility, pop 
+            case rain, snow, sys
             case dtTxt = "dt_txt"
         }
     }

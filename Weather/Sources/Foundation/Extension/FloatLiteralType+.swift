@@ -15,4 +15,8 @@ extension FloatLiteralType {
             return String(format: "%.\(decimalCount)f", self)
         }
     }
+    
+    func kelvinToCelsius() -> Self {
+        UnitTemperature.celsius.converter.value(fromBaseUnitValue: self)
+    }
 }

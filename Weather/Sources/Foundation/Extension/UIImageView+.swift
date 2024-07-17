@@ -12,7 +12,7 @@ extension UIImageView {
     func setImageWithCahe(
         with url: URL,
         placeHolder: UIImage? = nil,
-        cacheExpiration: TimeInterval = 300,
+        cacheExpiration: TimeInterval,
         config: CacheConfiguration = .default
     ) -> URLSessionTask? {
         @CacheWrapper<Data>(url: url, config: config)
@@ -143,12 +143,14 @@ extension UIImageView {
     func setImageWithCahe(
         with endpoint: EndpointRepresentable,
         placeHolder: UIImage? = nil,
+        cacheExpiration: TimeInterval = 300,
         config: CacheConfiguration = .default
     ) -> URLSessionTask? {
         guard let url = endpoint.toURL() else { return nil }
         return setImageWithCahe(
             with: url,
             placeHolder: placeHolder,
+            cacheExpiration: cacheExpiration,
             config: config
         )
     }

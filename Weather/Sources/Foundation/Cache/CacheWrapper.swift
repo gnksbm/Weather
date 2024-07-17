@@ -8,7 +8,7 @@
 import Foundation
 
 @propertyWrapper
-struct CacheWrapper<Value> {
+struct CacheWrapper<Value: Codable> {
     private let url: URL
     private let config: CacheConfiguration
     

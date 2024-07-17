@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CacheableObject<Value>: ReuseIdentifiable {
+final class CacheableObject<Value: Codable>: ReuseIdentifiable, Codable {
     let value: Value
     let validationField: ValidationField
     
@@ -37,7 +37,7 @@ final class CacheableObject<Value>: ReuseIdentifiable {
         return urlRequest
     }
     
-    enum ValidationField {
+    enum ValidationField: Codable {
         case eTag(String), lastModified(String)
         
         var requestKey: String {

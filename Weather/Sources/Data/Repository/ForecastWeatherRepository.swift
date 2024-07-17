@@ -15,7 +15,7 @@ final class ForecastWeatherRepository {
     
     private init() { }
     
-    func fetchForecastWeather(
+    func fetchForecastWeatherItems(
         request: OWLocationRequest
     ) -> Future
     <[WeatherSummaryViewController.CollectionViewItem], Error> {

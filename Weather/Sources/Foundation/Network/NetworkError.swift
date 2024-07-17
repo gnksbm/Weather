@@ -14,7 +14,6 @@ enum NetworkError: LocalizedError {
     case invalidResponseType
     case statusCodeError(statusCode: Int)
     case noData
-    case decodingError(type: Decodable.Type, error: Error)
     
     var errorDescription: String? {
         switch self {
@@ -30,8 +29,6 @@ enum NetworkError: LocalizedError {
             "잘못된 상태 코드입니다 - \(statusCode)"
         case .noData:
             "데이터를 받지 못했습니다."
-        case .decodingError(let type, let error):
-            "\(type)으로 디코딩에 실패하였습니다.\n에러: \(error.localizedDescription)"
         }
     }
 }

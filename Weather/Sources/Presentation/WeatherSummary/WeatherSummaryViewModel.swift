@@ -11,6 +11,7 @@ import Combine
 final class WeatherSummaryViewModel: ViewModel {
     private let currentWeatherRepository = CurrentWeatherRepository.shared
     private let forecastWeatherRepository = ForecastWeatherRepository.shared
+    private let locationService = LocationService.shared
     
     private var cancelBag = CancelBag()
     
@@ -22,19 +23,18 @@ final class WeatherSummaryViewModel: ViewModel {
         
         input.viewWillAppearEvent
             .withUnretained(self)
-            .flatMap { vm, request in
+            .flatMap { vm, _ in
+                vm.locationService.requestLocation()
+            }
+            .prefix(1)
+            .withUnretained(self)
+            .flatMap { vm, location in
                 Publishers.CombineLatest(
-                    vm.currentWeatherRepository.fetchCurrentWeather(
-                            request: OWLocationRequest(
-                                latitude: 37.501622,
-                                longitude: 126.891185
-                            )
+                    vm.currentWeatherRepository.fetchCurrentWeatherItems(
+                        request: OWLocationRequest(location: location)
                     ),
-                    vm.forecastWeatherRepository.fetchForecastWeather(
-                        request: OWLocationRequest(
-                            latitude: 37.501622,
-                            longitude: 126.891185
-                        )
+                    vm.forecastWeatherRepository.fetchForecastWeatherItems(
+                        request: OWLocationRequest(location: location)
                     )
                 )
                 .map { currentResult, forecastResult in

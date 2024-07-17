@@ -30,6 +30,7 @@ class WeatherSummaryViewController: BaseViewController, View {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewWillAppearEvent.send(())
+        showActivityIndicator()
     }
     
     func bind(viewModel: WeatherSummaryViewModel) {
@@ -41,10 +42,22 @@ class WeatherSummaryViewController: BaseViewController, View {
         
         output.collectionViewItem
             .withUnretained(self)
-            .sink { error in
-                error
+            .sink { [weak self] completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    if error as? LocationServiceError != nil {
+                        self?.showToast(message: "위치 정보를 가져올 수 없습니다.")
+                    } else {
+                        self?.showToast(message: "알 수 없는 오류입니다.")
+                    }
+                    Logger.error(error)
+                }
+                self?.hideActivityIndicator()
             } receiveValue: { vc, items in
                 vc.updateSnapshot(items: items)
+                vc.hideActivityIndicator()
             }
             .store(in: &cancelBag)
     }

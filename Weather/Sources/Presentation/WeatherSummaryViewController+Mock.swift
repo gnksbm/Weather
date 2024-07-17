@@ -146,10 +146,10 @@ extension WeatherSummaryViewController.CollectionViewDataSource {
         .init(
             section: .weatherConditions,
             items: [
-                .weatherConditions(.windSpeed(0)),
-                .weatherConditions(.cloud(0)),
-                .weatherConditions(.pressure(0)),
-                .weatherConditions(.humidity(0)),
+                .weatherConditions(.windSpeed(1.35215630)),
+                .weatherConditions(.cloud(50)),
+                .weatherConditions(.pressure(1020)),
+                .weatherConditions(.humidity(73)),
             ]
         )
     ]

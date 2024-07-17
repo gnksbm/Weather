@@ -11,6 +11,8 @@ import Neat
 import SnapKit
 
 final class ThreeHoursForecastCVCell: BaseCollectionViewCell {
+    private var imageFetchTask: URLSessionTask?
+    
     private let timeLabel = UILabel().nt.configure {
         $0.textColor(.label)
             .textAlignment(.center)
@@ -32,13 +34,15 @@ final class ThreeHoursForecastCVCell: BaseCollectionViewCell {
         super.prepareForReuse()
         [timeLabel, tempLabel].forEach { $0.text = nil }
         iconImageView.image = nil
+        imageFetchTask?.cancel()
+        imageFetchTask = nil
     }
     
     func configureCell(
         item: WeatherSummaryViewController.CollectionViewItem.ThreeHourForecast
     ) {
         timeLabel.text = item.time.formatted(dateFormat: .onlyTime) + "시"
-        iconImageView.setImageWithCahe(
+        imageFetchTask = iconImageView.setImageWithCahe(
             with: item.iconEndpoint,
             placeHolder: UIImage(
                 systemName: "sun.max.trianglebadge.exclamationmark"

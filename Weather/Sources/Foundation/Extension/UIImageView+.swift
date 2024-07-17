@@ -12,13 +12,20 @@ extension UIImageView {
     func setImageWithCahe(
         with url: URL,
         placeHolder: UIImage? = nil,
+        cacheExpiration: TimeInterval = 300,
         config: CacheConfiguration = .default
-    ) -> URLSessionTask {
+    ) -> URLSessionTask? {
         @CacheWrapper<Data>(url: url, config: config)
         var savedObject
-        var task: URLSessionTask
+        var task: URLSessionTask?
         switch savedObject {
         case .some(let cacheableData):
+            if cacheableData.date.distance(to: .now) < cacheExpiration {
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: cacheableData.value)
+                }
+                return task
+            }
             let urlRequest = cacheableData.toURLRequest(url: url)
             task = URLSession.shared.dataTask(
                 with: urlRequest
@@ -46,6 +53,7 @@ extension UIImageView {
                     return
                 }
                 guard httpURLResponse.statusCode != 304 else {
+                    savedObject = cacheableData.updatingDate()
                     DispatchQueue.main.async {
                         self.image = UIImage(data: cacheableData.value)
                     }
@@ -127,7 +135,7 @@ extension UIImageView {
                 }
             }
         }
-        task.resume()
+        task?.resume()
         return task
     }
     

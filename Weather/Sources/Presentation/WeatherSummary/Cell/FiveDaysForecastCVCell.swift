@@ -11,6 +11,8 @@ import Neat
 import SnapKit
 
 final class FiveDaysForecastCVCell: BaseCollectionViewCell {
+    private var imageFetchTask: URLSessionTask?
+    
     private let dayOfWeekLabel = UILabel().nt.configure {
         $0.textColor(.label)
             .font(WTDesign.Font.body1.with(weight: .light))
@@ -36,13 +38,15 @@ final class FiveDaysForecastCVCell: BaseCollectionViewCell {
         super.prepareForReuse()
         [dayOfWeekLabel, minTempLabel, maxTempLabel].forEach { $0.text = nil }
         iconImageView.image = nil
+        imageFetchTask?.cancel()
+        imageFetchTask = nil
     }
     
     func configureCell(
         item: WeatherSummaryViewController.CollectionViewItem.FiveDayForecast
     ) {
         dayOfWeekLabel.text = item.dayOfWeek
-        iconImageView.setImageWithCahe(
+        imageFetchTask = iconImageView.setImageWithCahe(
             with: item.iconEndpoint,
             placeHolder: UIImage(
                 systemName: "sun.max.trianglebadge.exclamationmark"

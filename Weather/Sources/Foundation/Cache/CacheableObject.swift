@@ -10,10 +10,12 @@ import Foundation
 final class CacheableObject<Value: Codable>: ReuseIdentifiable, Codable {
     let value: Value
     let validationField: ValidationField
+    let date: Date
     
     init(value: Value, validationField: ValidationField) {
         self.value = value
         self.validationField = validationField
+        date = .now
     }
     
     init?(value: Value, headers: [AnyHashable: Any]) {
@@ -25,6 +27,7 @@ final class CacheableObject<Value: Codable>: ReuseIdentifiable, Codable {
             return nil
         }
         self.value = value
+        date = .now
     }
     
     func toURLRequest(url: URL) -> URLRequest {
@@ -35,6 +38,10 @@ final class CacheableObject<Value: Codable>: ReuseIdentifiable, Codable {
         )
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         return urlRequest
+    }
+    
+    func updatingDate() -> Self {
+        Self(value: value, validationField: validationField)
     }
     
     enum ValidationField: Codable {

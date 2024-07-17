@@ -33,8 +33,6 @@ final class LocationService: NSObject {
     func requestLocation() -> AnyPublisher<CLLocation, Error> {
         locationManager.requestWhenInUseAuthorization()
         authStatus.withUnretained(self)
-            .dropFirst()
-            .prefix(1)
             .sink { service, status in
                 if status != .authorizedAlways, status != .authorizedWhenInUse {
                     service.currentLocation.send(

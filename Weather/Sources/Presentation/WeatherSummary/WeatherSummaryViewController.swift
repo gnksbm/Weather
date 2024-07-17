@@ -19,7 +19,9 @@ class WeatherSummaryViewController: BaseViewController, View {
     private lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: makeLayout()
-    )
+    ).nt.configure {
+        $0.showsVerticalScrollIndicator(false)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

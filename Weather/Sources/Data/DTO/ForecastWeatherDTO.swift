@@ -16,11 +16,12 @@ struct ForecastWeatherDTO: Decodable {
 }
 
 extension ForecastWeatherDTO {
-    func toThreeHourItem(
+    func toThreeHourItems(
     ) -> [WeatherSummaryViewController.CollectionViewItem] {
         list.map { forecast in
             return .threeHours(
-                WeatherSummaryViewController.CollectionViewItem.ThreeHourForecast(
+                WeatherSummaryViewController.CollectionViewItem
+                    .ThreeHourForecast(
                     time: forecast.date,
                     iconRequest: forecast.iconRequest,
                     temperature: forecast.main.temp
@@ -29,7 +30,7 @@ extension ForecastWeatherDTO {
         }
     }
     
-    func toFiveDaysItem(
+    func toFiveDaysItems(
     ) -> [WeatherSummaryViewController.CollectionViewItem] {
         list.map { forecast in
             return .fiveDays(

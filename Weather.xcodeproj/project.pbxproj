@@ -17,6 +17,8 @@
 		8E768DEE2C47CB620062431F /* ControlEventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DED2C47CB620062431F /* ControlEventPublisher.swift */; };
 		8E768DF02C47CB750062431F /* ControlSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DEF2C47CB750062431F /* ControlSubscription.swift */; };
 		8E768DF22C47CB9D0062431F /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DF12C47CB9C0062431F /* Publisher+.swift */; };
+		8E768DF52C47CC510062431F /* CurrentWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DF42C47CC510062431F /* CurrentWeatherRepository.swift */; };
+		8E768DF72C47CEC10062431F /* ForecastWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DF62C47CEC10062431F /* ForecastWeatherRepository.swift */; };
 		BEC239CA2C4504400086B797 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239C92C4504400086B797 /* SnapKit */; };
 		BEC239CD2C4504600086B797 /* Neat in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CC2C4504600086B797 /* Neat */; };
 		BEC239D02C45047C0086B797 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CF2C45047C0086B797 /* Alamofire */; };
@@ -81,6 +83,8 @@
 		8E768DED2C47CB620062431F /* ControlEventPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlEventPublisher.swift; sourceTree = "<group>"; };
 		8E768DEF2C47CB750062431F /* ControlSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSubscription.swift; sourceTree = "<group>"; };
 		8E768DF12C47CB9C0062431F /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
+		8E768DF42C47CC510062431F /* CurrentWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherRepository.swift; sourceTree = "<group>"; };
+		8E768DF62C47CEC10062431F /* ForecastWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherRepository.swift; sourceTree = "<group>"; };
 		BEC239FE2C450E840086B797 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		BEC23A002C45131A0086B797 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BEC23A012C45131A0086B797 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -180,6 +184,15 @@
 				8E768DF12C47CB9C0062431F /* Publisher+.swift */,
 			);
 			path = Combine;
+			sourceTree = "<group>";
+		};
+		8E768DF32C47CC390062431F /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8E768DF42C47CC510062431F /* CurrentWeatherRepository.swift */,
+				8E768DF62C47CEC10062431F /* ForecastWeatherRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		BEC239C42C4503C40086B797 /* Resources */ = {
@@ -308,9 +321,10 @@
 		BEC23A182C45131B0086B797 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8E768DF32C47CC390062431F /* Repository */,
 				BEC23A312C4518660086B797 /* Endpoint */,
 				BEC23A322C4518730086B797 /* Request */,
-				BEC23A372C4519060086B797 /* Response */,
+				BEC23A372C4519060086B797 /* DTO */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -336,13 +350,13 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		BEC23A372C4519060086B797 /* Response */ = {
+		BEC23A372C4519060086B797 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
 				BEC23A382C4519250086B797 /* CurrentWeatherDTO.swift */,
 				BEC23A3A2C451ACE0086B797 /* ForecastWeatherDTO.swift */,
 			);
-			path = Response;
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		BEC23A472C45541B0086B797 /* Cell */ = {
@@ -518,6 +532,8 @@
 				BEC23A512C4559530086B797 /* NSDirectionalEdgeInsets+.swift in Sources */,
 				8E768DF22C47CB9D0062431F /* Publisher+.swift in Sources */,
 				BEC23A362C45188D0086B797 /* OpenWeatherLocationEndpoint.swift in Sources */,
+				8E768DF52C47CC510062431F /* CurrentWeatherRepository.swift in Sources */,
+				8E768DF72C47CEC10062431F /* ForecastWeatherRepository.swift in Sources */,
 				8E2FD6682C4281B7008F68D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

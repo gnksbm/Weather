@@ -38,7 +38,7 @@ extension CurrentWeatherDTO {
         )
     }
     
-    func toWeatherConditionItem(
+    func toWeatherConditionItems(
     ) -> [WeatherSummaryViewController.CollectionViewItem] {
         [
             .weatherConditions(.windSpeed(wind.speed)),

@@ -194,8 +194,10 @@ extension WeatherSummaryViewController {
     }
     
     private func makeFiveDaysRegistration() -> FiveDaysRegistration {
-        FiveDaysRegistration { cell, indexPath, itemIdentifier in
-            
+        FiveDaysRegistration { cell, indexPath, cellData in
+            if case .fiveDays(let item) = cellData {
+                cell.configureCell(item: item)
+            }
         }
     }
     
@@ -254,6 +256,10 @@ extension WeatherSummaryViewController {
             let iconRequest: OpenWeatherIconRequest
             let minTemperature: Double
             let maxTemperature: Double
+            
+            var iconEndpoint: OpenWeatherIconEndpoint {
+                OpenWeatherIconEndpoint(request: iconRequest)
+            }
         }
 
         struct WeatherLocationInfo: Hashable {
@@ -376,7 +382,7 @@ extension WeatherSummaryViewController.CollectionViewDataSource {
             items: [
                 .fiveDays(
                     .init(
-                        dayOfWeek: "",
+                        dayOfWeek: "오늘",
                         iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         minTemperature: .random(in: 0...1),
                         maxTemperature: .random(in: 0...1)
@@ -384,7 +390,7 @@ extension WeatherSummaryViewController.CollectionViewDataSource {
                 ),
                 .fiveDays(
                     .init(
-                        dayOfWeek: "",
+                        dayOfWeek: "내일",
                         iconRequest: OpenWeatherIconRequest(iconCode: ""),
                         minTemperature: .random(in: 0...1),
                         maxTemperature: .random(in: 0...1)

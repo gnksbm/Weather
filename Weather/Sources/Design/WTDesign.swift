@@ -9,9 +9,10 @@ import UIKit
 
 struct WTDesign {
     struct Font {
-        static let small = UIFont.systemFont(ofSize: 13)
-        static let regular = UIFont.systemFont(ofSize: 17)
-        static let medium = UIFont.systemFont(ofSize: 20)
-        static let large = UIFont.systemFont(ofSize: 25)
+        static let body1 = UIFont.systemFont(ofSize: 26)
+        static let body2 = UIFont.systemFont(ofSize: 24)
+        static let label1 = UIFont.systemFont(ofSize: 22)
+        static let label2 = UIFont.systemFont(ofSize: 20)
+        static let caption = UIFont.systemFont(ofSize: 17)
     }
 }

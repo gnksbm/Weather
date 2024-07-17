@@ -10,4 +10,8 @@ import Foundation
 struct OpenWeatherIconRequest: Hashable {
     let id = UUID()
     let iconCode: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

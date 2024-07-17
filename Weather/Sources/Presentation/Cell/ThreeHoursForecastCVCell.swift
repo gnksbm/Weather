@@ -14,17 +14,18 @@ final class ThreeHoursForecastCVCell: BaseCollectionViewCell {
     private let timeLabel = UILabel().nt.configure {
         $0.textColor(.label)
             .textAlignment(.center)
-            .font(WTDesign.Font.regular)
+            .font(WTDesign.Font.label2)
     }
     
     private let iconImageView = UIImageView().nt.configure {
-        $0.contentMode(.scaleAspectFit)
+        $0.tintColor(.label)
+            .contentMode(.scaleAspectFit)
     }
     
     private let tempLabel = UILabel().nt.configure {
         $0.textColor(.label)
             .textAlignment(.center)
-            .font(WTDesign.Font.medium.with(weight: .medium))
+            .font(WTDesign.Font.label1.with(weight: .medium))
     }
     
     override func prepareForReuse() {
@@ -37,8 +38,13 @@ final class ThreeHoursForecastCVCell: BaseCollectionViewCell {
         item: WeatherSummaryViewController.CollectionViewItem.ThreeHourForecast
     ) {
         timeLabel.text = item.time.formatted(dateFormat: .onlyTime) + "시"
-        iconImageView.setImageWithCahe(with: item.iconEndpoint)
-        tempLabel.text = "\(item.temperature.removeDecimal())◦"
+        iconImageView.setImageWithCahe(
+            with: item.iconEndpoint,
+            placeHolder: UIImage(
+                systemName: "sun.max.trianglebadge.exclamationmark"
+            )
+        )
+        tempLabel.text = "\(item.temperature.removeDecimal())°"
     }
     
     override func configureLayout() {
@@ -52,9 +58,9 @@ final class ThreeHoursForecastCVCell: BaseCollectionViewCell {
         }
         
         iconImageView.snp.makeConstraints { make in
-            make.top.equalTo(timeLabel.snp.bottom).offset(40)
             make.center.equalTo(contentView)
-            make.bottom.equalTo(tempLabel.snp.top).offset(-40)
+            make.width.equalTo(contentView).multipliedBy(0.5)
+            make.height.equalTo(iconImageView.snp.width)
         }
         
         tempLabel.snp.makeConstraints { make in

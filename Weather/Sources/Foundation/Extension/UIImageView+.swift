@@ -11,6 +11,7 @@ extension UIImageView {
     @discardableResult
     func setImageWithCahe(
         with url: URL,
+        placeHolder: UIImage? = nil,
         config: CacheConfiguration = .default
     ) -> URLSessionTask {
         @CacheWrapper<Data>(url: url, config: config)
@@ -21,17 +22,27 @@ extension UIImageView {
             let urlRequest = cacheableData.toURLRequest(url: url)
             task = URLSession.shared.dataTask(
                 with: urlRequest
-            ) { data, response, error in
+            ) { [weak self] data, response, error in
+                guard let self else { return }
                 if let error {
-                    Logger.error(NetworkError.requestFailed(error))
+                    setPlaceHolderWithError(
+                        placeHolder: placeHolder,
+                        NetworkError.requestFailed(error)
+                    )
                     return
                 }
                 guard let response else {
-                    Logger.error(NetworkError.noResponse)
+                    setPlaceHolderWithError(
+                        placeHolder: placeHolder,
+                        NetworkError.noResponse
+                    )
                     return
                 }
                 guard let httpURLResponse = response as? HTTPURLResponse else {
-                    Logger.error(NetworkError.invalidResponseType)
+                    setPlaceHolderWithError(
+                        placeHolder: placeHolder,
+                        NetworkError.invalidResponseType
+                    )
                     return
                 }
                 guard httpURLResponse.statusCode != 304 else {
@@ -41,7 +52,8 @@ extension UIImageView {
                     return
                 }
                 guard 200..<300 ~= httpURLResponse.statusCode else {
-                    Logger.error(
+                    setPlaceHolderWithError(
+                        placeHolder: placeHolder,
                         NetworkError.statusCodeError(
                             statusCode: httpURLResponse.statusCode
                         )
@@ -49,7 +61,10 @@ extension UIImageView {
                     return
                 }
                 guard let data else {
-                    Logger.error(NetworkError.noData)
+                    setPlaceHolderWithError(
+                        placeHolder: placeHolder,
+                        NetworkError.noData
+                    )
                     return
                 }
                 DispatchQueue.main.async {
@@ -65,21 +80,32 @@ extension UIImageView {
         case .none:
             task = URLSession.shared.dataTask(
                 with: url
-            ) { data, response, error in
+            ) { [weak self] data, response, error in
+                guard let self else { return }
                 if let error {
-                    Logger.error(NetworkError.requestFailed(error))
+                    setPlaceHolderWithError(
+                        placeHolder: placeHolder,
+                        NetworkError.requestFailed(error)
+                    )
                     return
                 }
                 guard let response else {
-                    Logger.error(NetworkError.noResponse)
+                    setPlaceHolderWithError(
+                        placeHolder: placeHolder,
+                        NetworkError.noResponse
+                    )
                     return
                 }
                 guard let httpURLResponse = response as? HTTPURLResponse else {
-                    Logger.error(NetworkError.invalidResponseType)
+                    setPlaceHolderWithError(
+                        placeHolder: placeHolder,
+                        NetworkError.invalidResponseType
+                    )
                     return
                 }
                 guard 200..<300 ~= httpURLResponse.statusCode else {
-                    Logger.error(
+                    setPlaceHolderWithError(
+                        placeHolder: placeHolder,
                         NetworkError.statusCodeError(
                             statusCode: httpURLResponse.statusCode
                         )
@@ -108,9 +134,24 @@ extension UIImageView {
     @discardableResult
     func setImageWithCahe(
         with endpoint: EndpointRepresentable,
+        placeHolder: UIImage? = nil,
         config: CacheConfiguration = .default
     ) -> URLSessionTask? {
         guard let url = endpoint.toURL() else { return nil }
-        return setImageWithCahe(with: url, config: config)
+        return setImageWithCahe(
+            with: url,
+            placeHolder: placeHolder,
+            config: config
+        )
+    }
+    
+    private func setPlaceHolderWithError(
+        placeHolder: UIImage?,
+        _ error: Error
+    ) {
+        DispatchQueue.main.async {
+            self.image = placeHolder
+        }
+        Logger.error(error)
     }
 }

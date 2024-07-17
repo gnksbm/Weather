@@ -109,7 +109,7 @@ extension WeatherSummaryViewController {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalWidth(4/5)
+                heightDimension: .fractionalWidth(5/7)
             ),
             subitems: [item]
         )
@@ -202,8 +202,10 @@ extension WeatherSummaryViewController {
     }
     
     private func makeLocationRegistration() -> LocationRegistration {
-        LocationRegistration { cell, indexPath, itemIdentifier in
-            
+        LocationRegistration { cell, indexPath, cellData in
+            if case .location(let item) = cellData {
+                cell.configureCell(item: item)
+            }
         }
     }
     
@@ -291,152 +293,3 @@ extension WeatherSummaryViewController {
     UICollectionView.CellRegistration
     <WeatherConditionCVCell, CollectionViewItem>
 }
-
-#if DEBUG
-extension WeatherSummaryViewController.CollectionViewDataSource {
-    static let mock: [Self] = [
-        .init(
-            section: .threeHours,
-            items: [
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-                .threeHours(
-                    .init(
-                        time: .now,
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        temperature: .random(in: 0...1)
-                    )
-                ),
-            ]
-        ),
-        .init(
-            section: .fiveDays,
-            items: [
-                .fiveDays(
-                    .init(
-                        dayOfWeek: "오늘",
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        minTemperature: .random(in: 0...1),
-                        maxTemperature: .random(in: 0...1)
-                    )
-                ),
-                .fiveDays(
-                    .init(
-                        dayOfWeek: "내일",
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        minTemperature: .random(in: 0...1),
-                        maxTemperature: .random(in: 0...1)
-                    )
-                ),
-                .fiveDays(
-                    .init(
-                        dayOfWeek: "",
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        minTemperature: .random(in: 0...1),
-                        maxTemperature: .random(in: 0...1)
-                    )
-                ),
-                .fiveDays(
-                    .init(
-                        dayOfWeek: "",
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        minTemperature: .random(in: 0...1),
-                        maxTemperature: .random(in: 0...1)
-                    )
-                ),
-                .fiveDays(
-                    .init(
-                        dayOfWeek: "",
-                        iconRequest: OpenWeatherIconRequest(iconCode: ""),
-                        minTemperature: .random(in: 0...1),
-                        maxTemperature: .random(in: 0...1)
-                    )
-                ),
-            ]
-        ),
-        .init(
-            section: .location,
-            items: [
-                .location(.init(latitude: 0, longitude: 0))
-            ]
-        ),
-        .init(
-            section: .weatherConditions,
-            items: [
-                .weatherConditions(.windSpeed(0)),
-                .weatherConditions(.cloud(0)),
-                .weatherConditions(.pressure(0)),
-                .weatherConditions(.humidity(0)),
-            ]
-        )
-    ]
-}
-#endif

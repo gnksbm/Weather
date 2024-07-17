@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 
-class WeatherSummaryViewController: BaseViewController {
+class WeatherSummaryViewController: BaseViewController, View {
     private var dataSource: DataSource!
+    
+    private let viewWillAppearEvent = PassthroughSubject<Void, Never>()
+    private var cancelBag = CancelBag()
+    
     private lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: makeLayout()
@@ -20,7 +25,28 @@ class WeatherSummaryViewController: BaseViewController {
         super.viewDidLoad()
         configureDataSource()
         configureDefaultSnapshot()
-        updateSnapshot(dataSources: CollectionViewDataSource.mock)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewWillAppearEvent.send(())
+    }
+    
+    func bind(viewModel: WeatherSummaryViewModel) {
+        let output = viewModel.transform(
+            input: WeatherSummaryViewModel.Input(
+                viewWillAppearEvent: viewWillAppearEvent
+            )
+        )
+        
+        output.collectionViewItem
+            .withUnretained(self)
+            .sink { error in
+                error
+            } receiveValue: { vc, items in
+                vc.updateSnapshot(items: items)
+            }
+            .store(in: &cancelBag)
     }
     
     override func configureLayout() {
@@ -218,14 +244,32 @@ extension WeatherSummaryViewController {
         }
     }
     
-    private func updateSnapshot(dataSources: [CollectionViewDataSource]) {
+    private func updateSnapshot(items: [CollectionViewItem]) {
         var snapshot = Snapshot()
-        dataSources.forEach { dataSource in
-            snapshot.appendSections([dataSource.section])
-            snapshot.appendItems(
-                dataSource.items,
-                toSection: dataSource.section
-            )
+        snapshot.appendSections(CollectionViewSection.allCases)
+        items.forEach { item in
+            switch item {
+            case .threeHours:
+                snapshot.appendItems(
+                    [item],
+                    toSection: .threeHours
+                )
+            case .fiveDays:
+                snapshot.appendItems(
+                    [item],
+                    toSection: .fiveDays
+                )
+            case .location:
+                snapshot.appendItems(
+                    [item],
+                    toSection: .location
+                )
+            case .weatherConditions:
+                snapshot.appendItems(
+                    [item],
+                    toSection: .weatherConditions
+                )
+            }
         }
         dataSource.apply(snapshot)
     }

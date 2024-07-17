@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 import Alamofire
 
@@ -15,20 +16,25 @@ final class CurrentWeatherRepository {
     private init() { }
     
     func fetchCurrentWeather(
-        request: OWLocationRequest,
-        _ completion: @escaping
-    (Result<[WeatherSummaryViewController.CollectionViewItem], Error>) -> Void
-    ) {
-        AF.request(CurrentWeatherEndpoint(request: request))
-            .responseDecodable(of: CurrentWeatherDTO.self) { response in
-                completion(
-                    response.result
+        request: OWLocationRequest
+    ) -> Future
+    <[WeatherSummaryViewController.CollectionViewItem], Error> {
+        Future { promise in
+            AF.request(CurrentWeatherEndpoint(request: request))
+                .responseDecodable(of: CurrentWeatherDTO.self) { response in
+                    let result = response.result
                         .map { dto in
-                            dto.toWeatherConditionItems() + 
+                            dto.toWeatherConditionItems() +
                             [dto.toLocationItem()]
                         }
                         .mapError({ $0 as Error })
-                )
-            }
+                    switch result {
+                    case .success(let success):
+                        promise(.success(success))
+                    case .failure(let failure):
+                        promise(.failure(failure))
+                    }
+                }
+        }
     }
 }

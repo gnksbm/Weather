@@ -8,12 +8,6 @@
 import Combine
 import UIKit
 
-extension UICollectionView {
-    var didSelectItemEvent: AnyPublisher<IndexPath, Never> {
-        UICollectionViewDelegateProxy(self).eraseToAnyPublisher()
-    }
-}
-
 struct UICollectionViewDelegateProxy: Publisher {
     typealias Output = IndexPath
     typealias Failure = Never

@@ -42,6 +42,11 @@ class WeatherSummaryViewController: BaseViewController, View {
             )
         )
         
+        collectionView.didSelectItemEvent.sink {
+            print($0)
+        }
+        .store(in: &cancelBag)
+        
         output.collectionViewItem
             .withUnretained(self)
             .sink { [weak self] completion in

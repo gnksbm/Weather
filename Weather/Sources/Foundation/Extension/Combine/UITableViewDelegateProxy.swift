@@ -8,12 +8,6 @@
 import Combine
 import UIKit
 
-extension UITableView {
-    var didSelectRowEvent: AnyPublisher<IndexPath, Never> {
-        UITableViewDelegateProxy(self).eraseToAnyPublisher()
-    }
-}
-
 struct UITableViewDelegateProxy<TableView: UITableView>: Publisher {
     typealias Output = IndexPath
     typealias Failure = Never

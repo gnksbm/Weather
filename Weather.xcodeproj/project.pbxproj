@@ -25,6 +25,7 @@
 		8E768E022C47F0CC0062431F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E012C47F0CC0062431F /* ToastView.swift */; };
 		BE2AFB0D2C49208D00C6718C /* UITableViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */; };
 		BE2AFB0F2C4920B000C6718C /* UICollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */; };
+		BE2AFB112C49224B00C6718C /* UIKit+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB102C49224B00C6718C /* UIKit+Combine.swift */; };
 		BEC239CA2C4504400086B797 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239C92C4504400086B797 /* SnapKit */; };
 		BEC239CD2C4504600086B797 /* Neat in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CC2C4504600086B797 /* Neat */; };
 		BEC239D02C45047C0086B797 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CF2C45047C0086B797 /* Alamofire */; };
@@ -97,6 +98,7 @@
 		8E768E012C47F0CC0062431F /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewDelegateProxy.swift; sourceTree = "<group>"; };
 		BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
+		BE2AFB102C49224B00C6718C /* UIKit+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Combine.swift"; sourceTree = "<group>"; };
 		BEC239FE2C450E840086B797 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		BEC23A002C45131A0086B797 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BEC23A012C45131A0086B797 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				8E768DEF2C47CB750062431F /* ControlSubscription.swift */,
 				BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */,
 				BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */,
+				BE2AFB102C49224B00C6718C /* UIKit+Combine.swift */,
 				8E768DF12C47CB9C0062431F /* Publisher+.swift */,
 			);
 			path = Combine;
@@ -524,6 +527,7 @@
 			files = (
 				BEC23A2B2C4513510086B797 /* CurrentWeatherEndpoint.swift in Sources */,
 				BEC23A282C45131B0086B797 /* Observable.swift in Sources */,
+				BE2AFB112C49224B00C6718C /* UIKit+Combine.swift in Sources */,
 				8E768DFA2C47CF930062431F /* WeatherSummaryViewModel.swift in Sources */,
 				BEC23A6A2C467F340086B797 /* CacheWrapper.swift in Sources */,
 				BEC23A4D2C4556580086B797 /* WeatherLocationCVCell.swift in Sources */,

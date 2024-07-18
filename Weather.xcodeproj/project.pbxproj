@@ -23,6 +23,8 @@
 		8E768DFD2C47DA4A0062431F /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DFC2C47DA4A0062431F /* LocationService.swift */; };
 		8E768DFF2C47F0A00062431F /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DFE2C47F0A00062431F /* UIViewController+.swift */; };
 		8E768E022C47F0CC0062431F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E012C47F0CC0062431F /* ToastView.swift */; };
+		BE2AFB0D2C49208D00C6718C /* UITableViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */; };
+		BE2AFB0F2C4920B000C6718C /* UICollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */; };
 		BEC239CA2C4504400086B797 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239C92C4504400086B797 /* SnapKit */; };
 		BEC239CD2C4504600086B797 /* Neat in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CC2C4504600086B797 /* Neat */; };
 		BEC239D02C45047C0086B797 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BEC239CF2C45047C0086B797 /* Alamofire */; };
@@ -93,6 +95,8 @@
 		8E768DFC2C47DA4A0062431F /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		8E768DFE2C47F0A00062431F /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8E768E012C47F0CC0062431F /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewDelegateProxy.swift; sourceTree = "<group>"; };
+		BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		BEC239FE2C450E840086B797 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		BEC23A002C45131A0086B797 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BEC23A012C45131A0086B797 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				8E768DEB2C47CB4D0062431F /* CombineControlCompatible.swift */,
 				8E768DED2C47CB620062431F /* ControlEventPublisher.swift */,
 				8E768DEF2C47CB750062431F /* ControlSubscription.swift */,
+				BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */,
+				BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */,
 				8E768DF12C47CB9C0062431F /* Publisher+.swift */,
 			);
 			path = Combine;
@@ -559,8 +565,10 @@
 				8E2FD6662C4281B7008F68D5 /* AppDelegate.swift in Sources */,
 				BEC23A742C4685100086B797 /* FloatLiteralType+.swift in Sources */,
 				BEC23A1E2C45131B0086B797 /* BaseView.swift in Sources */,
+				BE2AFB0D2C49208D00C6718C /* UITableViewDelegateProxy.swift in Sources */,
 				BEC23A212C45131B0086B797 /* EndpointError.swift in Sources */,
 				8E768DE72C47C63E0062431F /* WeatherSummaryViewController+Mock.swift in Sources */,
+				BE2AFB0F2C4920B000C6718C /* UICollectionViewDelegateProxy.swift in Sources */,
 				BEC23A6B2C467F340086B797 /* DataSize.swift in Sources */,
 				BEC23A1B2C45131B0086B797 /* ViewModelStorage.swift in Sources */,
 				BEC23A252C45131B0086B797 /* Weak.swift in Sources */,

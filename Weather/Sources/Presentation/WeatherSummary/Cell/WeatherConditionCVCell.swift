@@ -52,7 +52,7 @@ final class WeatherConditionCVCell: BaseCollectionViewCell {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(iconImageView)
-            make.leading.equalTo(iconImageView.snp.trailing).offset(spacing)
+            make.leading.equalTo(iconImageView.snp.trailing).offset(8)
             make.trailing.equalTo(contentView).inset(spacing)
         }
         

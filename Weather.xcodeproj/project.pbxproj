@@ -11,7 +11,7 @@
 		8E2FD6682C4281B7008F68D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FD6672C4281B7008F68D5 /* SceneDelegate.swift */; };
 		8E2FD66F2C4281B8008F68D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E2FD66E2C4281B8008F68D5 /* Assets.xcassets */; };
 		8E2FD6722C4281B8008F68D5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E2FD6712C4281B8008F68D5 /* Base */; };
-		8E768DE72C47C63E0062431F /* WeatherSummaryViewController+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DE62C47C63E0062431F /* WeatherSummaryViewController+Mock.swift */; };
+		8E768DE72C47C63E0062431F /* WeatherSummaryViewController+PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DE62C47C63E0062431F /* WeatherSummaryViewController+PlaceHolder.swift */; };
 		8E768DEA2C47CB370062431F /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DE92C47CB370062431F /* CancelBag.swift */; };
 		8E768DEC2C47CB4D0062431F /* CombineControlCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DEB2C47CB4D0062431F /* CombineControlCompatible.swift */; };
 		8E768DEE2C47CB620062431F /* ControlEventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DED2C47CB620062431F /* ControlEventPublisher.swift */; };
@@ -93,7 +93,7 @@
 		8E2FD66E2C4281B8008F68D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E2FD6712C4281B8008F68D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E2FD6732C4281B8008F68D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E768DE62C47C63E0062431F /* WeatherSummaryViewController+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherSummaryViewController+Mock.swift"; sourceTree = "<group>"; };
+		8E768DE62C47C63E0062431F /* WeatherSummaryViewController+PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherSummaryViewController+PlaceHolder.swift"; sourceTree = "<group>"; };
 		8E768DE92C47CB370062431F /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		8E768DEB2C47CB4D0062431F /* CombineControlCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineControlCompatible.swift; sourceTree = "<group>"; };
 		8E768DED2C47CB620062431F /* ControlEventPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlEventPublisher.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				BEC23A3C2C4542C10086B797 /* WeatherSummaryViewController.swift */,
-				8E768DE62C47C63E0062431F /* WeatherSummaryViewController+Mock.swift */,
+				8E768DE62C47C63E0062431F /* WeatherSummaryViewController+PlaceHolder.swift */,
 				8E768DF92C47CF930062431F /* WeatherSummaryViewModel.swift */,
 				BEC23A472C45541B0086B797 /* Cell */,
 			);
@@ -612,7 +612,7 @@
 				BEC23A1E2C45131B0086B797 /* BaseView.swift in Sources */,
 				BE2AFB0D2C49208D00C6718C /* UITableViewDelegateProxy.swift in Sources */,
 				BEC23A212C45131B0086B797 /* EndpointError.swift in Sources */,
-				8E768DE72C47C63E0062431F /* WeatherSummaryViewController+Mock.swift in Sources */,
+				8E768DE72C47C63E0062431F /* WeatherSummaryViewController+PlaceHolder.swift in Sources */,
 				BE2AFB0F2C4920B000C6718C /* UICollectionViewDelegateProxy.swift in Sources */,
 				BEC23A6B2C467F340086B797 /* DataSize.swift in Sources */,
 				BEC23A1B2C45131B0086B797 /* ViewModelStorage.swift in Sources */,

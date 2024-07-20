@@ -17,5 +17,5 @@ struct OpenWeatherIconRequest: Hashable {
 }
 
 extension OpenWeatherIconRequest {
-    static let empty = Self(iconCode: "")
+    static let `default` = OpenWeatherIconRequest(iconCode: "01d")
 }

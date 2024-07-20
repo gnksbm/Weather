@@ -52,7 +52,7 @@ extension ForecastWeatherDTO {
                 return .fiveDays(
                     .init(
                         dayOfWeek: weekday.toString,
-                        iconRequest: iconRequest ?? .empty,
+                        iconRequest: iconRequest ?? .default,
                         minTemperature: minTemp.kelvinToCelsius(),
                         maxTemperature: maxTemp.kelvinToCelsius()
                     )

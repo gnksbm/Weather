@@ -155,6 +155,16 @@ extension WeatherSummaryViewController {
         )
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
+        section.boundarySupplementaryItems = [
+            NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .estimated(10)
+                ),
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+        ]
         return section
     }
     
@@ -172,7 +182,18 @@ extension WeatherSummaryViewController {
             ),
             subitems: [item]
         )
-        return NSCollectionLayoutSection(group: group)
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [
+            NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .estimated(10)
+                ),
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+        ]
+        return section
     }
     
     private func makeLocationSection() -> NSCollectionLayoutSection {
@@ -189,7 +210,18 @@ extension WeatherSummaryViewController {
             ),
             subitems: [item]
         )
-        return NSCollectionLayoutSection(group: group)
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [
+            NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .estimated(10)
+                ),
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+        ]
+        return section
     }
     
     private func makeWeatherConditionsSection() -> NSCollectionLayoutSection {
@@ -223,6 +255,7 @@ extension WeatherSummaryViewController {
         let fiveDaysRegistration = makeFiveDaysRegistration()
         let locationRegistration = makeLocationRegistration()
         let weatherConditionsRegistration = makeWeatherConditionsRegistration()
+        let headerRegistration = makeHeaderRegistration()
         
         dataSource = DataSource(
             collectionView: collectionView
@@ -260,13 +293,19 @@ extension WeatherSummaryViewController {
                 )
             }
         }
-        configureDefaultSnapshot()
-    }
-    
-    private func configureDefaultSnapshot() {
-        var snapshot = Snapshot()
-        snapshot.appendSections(CollectionViewSection.allCases)
-        dataSource.apply(snapshot, animatingDifferences: false)
+        dataSource.supplementaryViewProvider =
+        { collectionView, elementKind, indexPath in
+            switch CollectionViewSection.allCases[indexPath.section] {
+            case .threeHours, .fiveDays, .location:
+                collectionView.dequeueConfiguredReusableSupplementary(
+                    using: headerRegistration,
+                    for: indexPath
+                )
+            default:
+                nil
+            }
+        }
+        updateSnapshot(items: CollectionViewItem.placeholder)
     }
     
     private func makeCurrentWeatherRegistration() -> CurrentWeatherRegistration {
@@ -310,6 +349,21 @@ extension WeatherSummaryViewController {
         }
     }
     
+    private func makeHeaderRegistration(
+    ) -> HeaderRegistration {
+        HeaderRegistration(
+            elementKind: UICollectionView.elementKindSectionHeader
+        ) { view, kind, indexPath in
+            var config = UIListContentConfiguration.cell()
+            let section = CollectionViewSection.allCases[indexPath.section]
+            config.text = section.title
+            config.image = section.image
+            config.imageToTextPadding = 8
+            config.imageProperties.tintColor = .label
+            view.contentConfiguration = config
+        }
+    }
+    
     private func updateSnapshot(items: [CollectionViewItem]) {
         var snapshot = Snapshot()
         snapshot.appendSections(CollectionViewSection.allCases)
@@ -345,13 +399,32 @@ extension WeatherSummaryViewController {
         dataSource.apply(snapshot)
     }
     
-    struct CollectionViewDataSource {
-        let section: CollectionViewSection
-        let items: [CollectionViewItem]
-    }
-    
     enum CollectionViewSection: CaseIterable {
         case currentWeather, threeHours, fiveDays, location, weatherConditions
+        
+        var title: String? {
+            switch self {
+            case .threeHours:
+                "3시간 간격의 일기예보"
+            case .fiveDays:
+                "5일 간의 일기예보"
+            case .location:
+                "위치"
+            default:
+                nil
+            }
+        }
+        
+        var image: UIImage? {
+            switch self {
+            case .threeHours, .fiveDays:
+                UIImage(systemName: "calendar")
+            case .location:
+                UIImage(systemName: "thermometer.medium")
+            default:
+                nil
+            }
+        }
     }
     
     enum CollectionViewItem: Hashable {
@@ -383,4 +456,7 @@ extension WeatherSummaryViewController {
     typealias WeatherConditionsRegistration =
     UICollectionView.CellRegistration
     <WeatherConditionCVCell, CollectionViewItem>
+    
+    typealias HeaderRegistration =
+    UICollectionView.SupplementaryRegistration<UICollectionViewCell>
 }

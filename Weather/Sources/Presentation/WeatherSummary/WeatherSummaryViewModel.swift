@@ -18,7 +18,10 @@ final class WeatherSummaryViewModel: ViewModel {
     func transform(input: Input) -> Output {
         let output = Output(
             collectionViewItem: PassthroughSubject
-            <[WeatherSummaryViewController.CollectionViewItem], Error>()
+            <[WeatherSummaryViewController.CollectionViewItem], Never>(),
+            locationFailure: PassthroughSubject
+            <LocationServiceError, Never>(),
+            networkingFailure: PassthroughSubject<Error, Never>()
         )
         
         input.viewWillAppearEvent
@@ -26,29 +29,41 @@ final class WeatherSummaryViewModel: ViewModel {
             .flatMap { vm, _ in
                 vm.locationService.requestLocation()
             }
-            .prefix(1)
             .withUnretained(self)
-            .flatMap { vm, location in
-                Publishers.CombineLatest(
-                    vm.currentWeatherRepository.fetchCurrentWeatherItems(
-                        request: OWLocationRequest(location: location)
-                    ),
-                    vm.forecastWeatherRepository.fetchForecastWeatherItems(
-                        request: OWLocationRequest(location: location)
+            .flatMap { vm, result in
+                switch result {
+                case .success(let location):
+                    return Publishers.CombineLatest(
+                        vm.currentWeatherRepository.fetchCurrentWeatherItems(
+                            request: OWLocationRequest(location: location)
+                        ),
+                        vm.forecastWeatherRepository.fetchForecastWeatherItems(
+                            request: OWLocationRequest(location: location)
+                        )
                     )
-                )
-                .map { currentResult, forecastResult in
-                    currentResult + forecastResult
+                    .map { currentResult, forecastResult in
+                        currentResult + forecastResult
+                    }
+                    .eraseToAnyPublisher()
+                case .failure(let error):
+                    output.locationFailure.send(error)
+                    return Future
+                    <[WeatherSummaryViewController.CollectionViewItem], Error> {
+                        promise in
+                        promise(.success([]))
+                    }
+                    .eraseToAnyPublisher()
                 }
-                .eraseToAnyPublisher()
             }
-            .sink { failure in
-                output.collectionViewItem.send(completion: failure)
+            .sink { completion in
+                Logger.debug(
+                    String(describing: Self.self) +
+                    "viewWillAppearEvent 스트림 종료"
+                )
             } receiveValue: { items in
                 output.collectionViewItem.send(items)
             }
             .store(in: &cancelBag)
-
 
         return output
     }
@@ -61,6 +76,8 @@ extension WeatherSummaryViewModel {
     
     struct Output {
         let collectionViewItem: PassthroughSubject
-        <[WeatherSummaryViewController.CollectionViewItem], Error>
+        <[WeatherSummaryViewController.CollectionViewItem], Never>
+        let locationFailure: PassthroughSubject<LocationServiceError, Never>
+        let networkingFailure: PassthroughSubject<Error, Never>
     }
 }

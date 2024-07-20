@@ -13,6 +13,9 @@ import Neat
 
 enum LocationServiceError: Error {
     case notAuthorized
+    case locationUpdateFailed
+    case unknown
+    case locationManagerError(Error)
 }
 
 final class LocationService: NSObject {
@@ -26,23 +29,31 @@ final class LocationService: NSObject {
     
     private lazy var authStatus = PassthroughSubject
     <CLAuthorizationStatus, Never>()
-    private let currentLocation = PassthroughSubject<CLLocation, Error>()
+    private let currentLocation =
+    PassthroughSubject<Result<CLLocation, LocationServiceError>, Never>()
     
     private override init() { }
     
-    func requestLocation() -> AnyPublisher<CLLocation, Error> {
+    func requestLocation(
+    ) -> AnyPublisher<Result<CLLocation, LocationServiceError>, Never> {
+        cancelBag.cancel()
         locationManager.requestWhenInUseAuthorization()
         authStatus.withUnretained(self)
-            .dropFirst()
+            .drop { service, status in
+                status == .notDetermined
+            }
             .sink { service, status in
-                if status != .authorizedAlways, status != .authorizedWhenInUse {
-                    service.currentLocation.send(
-                        completion: .failure(
-                            LocationServiceError.notAuthorized
-                        )
-                    )
-                } else {
+                switch status {
+                case .authorizedAlways, .authorizedWhenInUse:
                     service.locationManager.requestLocation()
+                case .denied, .restricted:
+                    service.currentLocation.send(
+                        .failure(LocationServiceError.notAuthorized)
+                    )
+                default:
+                    service.currentLocation.send(
+                        .failure(LocationServiceError.unknown)
+                    )
                 }
             }
             .store(in: &cancelBag)
@@ -60,7 +71,9 @@ extension LocationService: CLLocationManagerDelegate {
         didUpdateLocations locations: [CLLocation]
     ) {
         if let location = locations.first {
-            currentLocation.send(location)
+            currentLocation.send(.success(location))
+        } else {
+            currentLocation.send(.failure(.locationUpdateFailed))
         }
     }
     
@@ -68,6 +81,6 @@ extension LocationService: CLLocationManagerDelegate {
         _ manager: CLLocationManager,
         didFailWithError error: any Error
     ) {
-        currentLocation.send(completion: .failure(error))
+        currentLocation.send(.failure(.locationManagerError(error)))
     }
 }

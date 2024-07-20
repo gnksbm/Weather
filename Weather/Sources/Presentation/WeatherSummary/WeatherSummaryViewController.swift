@@ -26,7 +26,6 @@ class WeatherSummaryViewController: BaseViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataSource()
-        configureDefaultSnapshot()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,22 +48,31 @@ class WeatherSummaryViewController: BaseViewController, View {
         
         output.collectionViewItem
             .withUnretained(self)
-            .sink { [weak self] completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    if error as? LocationServiceError != nil {
-                        self?.showToast(message: "위치 정보를 가져올 수 없습니다.")
-                    } else {
-                        self?.showToast(message: "알 수 없는 오류입니다.")
-                    }
-                    Logger.error(error)
-                }
-                self?.hideActivityIndicator()
-            } receiveValue: { vc, items in
+            .sink { vc, items in
                 vc.updateSnapshot(items: items)
                 vc.hideActivityIndicator()
+            }
+            .store(in: &cancelBag)
+        
+        output.locationFailure
+            .withUnretained(self)
+            .sink { vc, error in
+                switch error {
+                case .notAuthorized:
+                    vc.showToast(message: "위치 권환을 활성화 해주세요")
+                case .locationUpdateFailed:
+                    vc.showToast(message: "위치 정보를 가져올 수 없습니다")
+                case .unknown, .locationManagerError:
+                    Logger.error(error)
+                }
+            }
+            .store(in: &cancelBag)
+        
+        output.networkingFailure
+            .withUnretained(self)
+            .sink { vc, error in
+                Logger.error(error)
+                vc.showToast(message: "네트워크 오류")
             }
             .store(in: &cancelBag)
     }
@@ -223,6 +231,7 @@ extension WeatherSummaryViewController {
                 )
             }
         }
+        configureDefaultSnapshot()
     }
     
     private func configureDefaultSnapshot() {

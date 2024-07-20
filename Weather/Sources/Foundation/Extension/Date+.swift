@@ -13,4 +13,8 @@ extension Date {
         calendar.timeZone = TimeZone(identifier: "KST") ?? .current
         return calendar.isDateInToday(self)
     }
+    
+    var weekday: Weekday {
+        Weekday(rawValue: Calendar.current.component(.weekday, from: self))
+    }
 }

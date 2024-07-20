@@ -15,3 +15,7 @@ struct OpenWeatherIconRequest: Hashable {
         hasher.combine(id)
     }
 }
+
+extension OpenWeatherIconRequest {
+    static let empty = Self(iconCode: "")
+}

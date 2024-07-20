@@ -23,6 +23,9 @@
 		8E768DFD2C47DA4A0062431F /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DFC2C47DA4A0062431F /* LocationService.swift */; };
 		8E768DFF2C47F0A00062431F /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768DFE2C47F0A00062431F /* UIViewController+.swift */; };
 		8E768E022C47F0CC0062431F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E012C47F0CC0062431F /* ToastView.swift */; };
+		8E768E062C4BC66D0062431F /* Sequence+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E052C4BC66D0062431F /* Sequence+.swift */; };
+		8E768E082C4BC6790062431F /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E072C4BC6790062431F /* Collection+.swift */; };
+		8E768E0B2C4BC8860062431F /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E0A2C4BC8860062431F /* Weekday.swift */; };
 		BE2AFB0D2C49208D00C6718C /* UITableViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */; };
 		BE2AFB0F2C4920B000C6718C /* UICollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */; };
 		BE2AFB112C49224B00C6718C /* UIKit+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB102C49224B00C6718C /* UIKit+Combine.swift */; };
@@ -96,6 +99,9 @@
 		8E768DFC2C47DA4A0062431F /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		8E768DFE2C47F0A00062431F /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8E768E012C47F0CC0062431F /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		8E768E052C4BC66D0062431F /* Sequence+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+.swift"; sourceTree = "<group>"; };
+		8E768E072C4BC6790062431F /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		8E768E0A2C4BC8860062431F /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewDelegateProxy.swift; sourceTree = "<group>"; };
 		BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		BE2AFB102C49224B00C6718C /* UIKit+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Combine.swift"; sourceTree = "<group>"; };
@@ -239,6 +245,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		8E768E092C4BC8810062431F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E768E0A2C4BC8860062431F /* Weekday.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BEC239C42C4503C40086B797 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,10 +335,12 @@
 		BEC23A0F2C45131A0086B797 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8E768E072C4BC6790062431F /* Collection+.swift */,
 				BEC23A452C454F850086B797 /* Date+.swift */,
 				BEC23A732C4685100086B797 /* FloatLiteralType+.swift */,
 				BEC23A522C45599F0086B797 /* IntegerLiteralType+.swift */,
 				BEC23A502C4559530086B797 /* NSDirectionalEdgeInsets+.swift */,
+				8E768E052C4BC66D0062431F /* Sequence+.swift */,
 				BEC23A0E2C45131A0086B797 /* String+.swift */,
 				BEC23A6C2C467F940086B797 /* UIImageView+.swift */,
 				BEC23A712C46849D0086B797 /* UIFont+.swift */,
@@ -365,6 +381,7 @@
 		BEC23A182C45131B0086B797 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8E768E092C4BC8810062431F /* Model */,
 				8E768DFB2C47D93D0062431F /* Service */,
 				8E768DF32C47CC390062431F /* Repository */,
 				BEC23A312C4518660086B797 /* Endpoint */,
@@ -546,6 +563,7 @@
 				BEC23A442C454D5A0086B797 /* OpenWeatherIconRequest.swift in Sources */,
 				BEC23A422C454CA20086B797 /* OpenWeatherIconEndpoint.swift in Sources */,
 				8E768DF02C47CB750062431F /* ControlSubscription.swift in Sources */,
+				8E768E0B2C4BC8860062431F /* Weekday.swift in Sources */,
 				8E768DEC2C47CB4D0062431F /* CombineControlCompatible.swift in Sources */,
 				BEC23A4F2C4556720086B797 /* WeatherConditionCVCell.swift in Sources */,
 				BEC23A392C4519250086B797 /* CurrentWeatherDTO.swift in Sources */,
@@ -560,6 +578,7 @@
 				8E768E022C47F0CC0062431F /* ToastView.swift in Sources */,
 				BEC23A772C4686380086B797 /* WTDesign.swift in Sources */,
 				BEC23A692C467F340086B797 /* CacheStorage.swift in Sources */,
+				8E768E082C4BC6790062431F /* Collection+.swift in Sources */,
 				BEC23A1F2C45131B0086B797 /* BaseViewController.swift in Sources */,
 				BEC23A302C45178D0086B797 /* ForecastWeatherEndpoint.swift in Sources */,
 				BEC23A242C45131B0086B797 /* DeinitHandler.swift in Sources */,
@@ -585,6 +604,7 @@
 				8E768DF22C47CB9D0062431F /* Publisher+.swift in Sources */,
 				BEC23A362C45188D0086B797 /* OpenWeatherLocationEndpoint.swift in Sources */,
 				8E768DF52C47CC510062431F /* CurrentWeatherRepository.swift in Sources */,
+				8E768E062C4BC66D0062431F /* Sequence+.swift in Sources */,
 				8E768DF72C47CEC10062431F /* ForecastWeatherRepository.swift in Sources */,
 				8E2FD6682C4281B7008F68D5 /* SceneDelegate.swift in Sources */,
 			);

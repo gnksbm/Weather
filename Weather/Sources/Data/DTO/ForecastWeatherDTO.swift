@@ -32,17 +32,33 @@ extension ForecastWeatherDTO {
     
     func toFiveDaysItems(
     ) -> [WeatherSummaryViewController.CollectionViewItem] {
-        list.map { forecast in
-            return .fiveDays(
-                WeatherSummaryViewController.CollectionViewItem.FiveDayForecast(
-                    dayOfWeek: forecast.date.isToday ?
-                    "오늘" : forecast.date.formatted(dateFormat: .onlyDayOfWeek),
-                    iconRequest: forecast.iconRequest,
-                    minTemperature: forecast.main.tempMin.kelvinToCelsius(),
-                    maxTemperature: forecast.main.tempMax.kelvinToCelsius()
-                )
-            )
+        var dic = [Weekday: [Forecast]]()
+        list.forEach { forecast in
+            dic[
+                forecast.date.weekday,
+                default: []
+            ].append(forecast)
         }
+        return dic
+            .sorted { lhs, rhs in
+                Weekday.CurrentWeekdayComparator()
+                    .compare(lhs.key, rhs.key) == .orderedAscending
+            }
+            .map { weekday, forecast in
+                let iconRequest = forecast.mostPopularValue(
+                    keyPath: \.iconRequest
+                )
+                let minTemp = forecast.getAverage(keyPath: \.main.tempMin)
+                let maxTemp = forecast.getAverage(keyPath: \.main.tempMax)
+                return .fiveDays(
+                    .init(
+                        dayOfWeek: weekday.toString,
+                        iconRequest: iconRequest ?? .empty,
+                        minTemperature: minTemp.kelvinToCelsius(),
+                        maxTemperature: maxTemp.kelvinToCelsius()
+                    )
+                )
+            }
     }
 }
 

@@ -32,7 +32,10 @@ final class LocationService: NSObject {
     private let currentLocation =
     PassthroughSubject<Result<CLLocation, LocationServiceError>, Never>()
     
-    private override init() { }
+    private override init() { 
+        super.init()
+        configureLocationManager()
+    }
     
     func requestLocation(
     ) -> AnyPublisher<Result<CLLocation, LocationServiceError>, Never> {
@@ -58,6 +61,10 @@ final class LocationService: NSObject {
             }
             .store(in: &cancelBag)
         return currentLocation.eraseToAnyPublisher()
+    }
+    
+    private func configureLocationManager() {
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
     }
 }
 

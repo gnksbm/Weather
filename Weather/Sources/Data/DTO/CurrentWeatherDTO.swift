@@ -28,6 +28,19 @@ struct CurrentWeatherDTO: Decodable {
 }
 
 extension CurrentWeatherDTO {
+    func toCurrentItem(
+    ) -> WeatherSummaryViewController.CollectionViewItem {
+        .currentWeather(
+            CurrentWeather(
+                area: name,
+                temperature: main.temp.kelvinToCelsius(),
+                description: weather.first?.description,
+                minTemperature: main.tempMin.kelvinToCelsius(),
+                maxTemperature: main.tempMax.kelvinToCelsius()
+            )
+        )
+    }
+    
     func toLocationItem(
     ) -> WeatherSummaryViewController.CollectionViewItem {
         .location(

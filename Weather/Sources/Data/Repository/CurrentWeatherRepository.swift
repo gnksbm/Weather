@@ -24,6 +24,7 @@ final class CurrentWeatherRepository {
                 .responseDecodable(of: CurrentWeatherDTO.self) { response in
                     let result = response.result
                         .map { dto in
+                            [dto.toCurrentItem()] +
                             dto.toWeatherConditionItems() +
                             [dto.toLocationItem()]
                         }

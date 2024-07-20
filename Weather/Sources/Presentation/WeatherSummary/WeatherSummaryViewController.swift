@@ -90,6 +90,7 @@ class WeatherSummaryViewController: BaseViewController, View {
 
 extension WeatherSummaryViewController {
     private func makeLayout() -> UICollectionViewCompositionalLayout {
+        let currentWeatherSection = makeCurrentWeatherSection()
         let threeHoursSection = makeThreeHoursSection()
         let locationSection = makeLocationSection()
         let fiveDaysSection = makeFiveDaysSection()
@@ -98,6 +99,8 @@ extension WeatherSummaryViewController {
         return UICollectionViewCompositionalLayout { section, env in
             let sectionKind = CollectionViewSection.allCases[section]
             let section = switch sectionKind {
+            case .currentWeather:
+                currentWeatherSection
             case .threeHours:
                 threeHoursSection
             case .fiveDays:
@@ -115,6 +118,25 @@ extension WeatherSummaryViewController {
             )
             return section
         }
+    }
+    
+    private func makeCurrentWeatherSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(1)
+            )
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalWidth(2/3)
+            ),
+            subitems: [item]
+        )
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .paging
+        return section
     }
     
     private func makeThreeHoursSection() -> NSCollectionLayoutSection {
@@ -196,6 +218,7 @@ extension WeatherSummaryViewController {
     }
     
     private func configureDataSource() {
+        let currentWeatherRegistration = makeCurrentWeatherRegistration()
         let threeHoursRegistration = makeThreeHoursRegistration()
         let fiveDaysRegistration = makeFiveDaysRegistration()
         let locationRegistration = makeLocationRegistration()
@@ -205,6 +228,12 @@ extension WeatherSummaryViewController {
             collectionView: collectionView
         ) { collectionView, indexPath, item in
             switch CollectionViewSection.allCases[indexPath.section] {
+            case .currentWeather:
+                collectionView.dequeueConfiguredReusableCell(
+                    using: currentWeatherRegistration,
+                    for: indexPath,
+                    item: item
+                )
             case .threeHours:
                 collectionView.dequeueConfiguredReusableCell(
                     using: threeHoursRegistration,
@@ -238,6 +267,14 @@ extension WeatherSummaryViewController {
         var snapshot = Snapshot()
         snapshot.appendSections(CollectionViewSection.allCases)
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    private func makeCurrentWeatherRegistration() -> CurrentWeatherRegistration {
+        CurrentWeatherRegistration { cell, indexPath, cellData in
+            if case .currentWeather(let item) = cellData {
+                cell.configureCell(item: item)
+            }
+        }
     }
     
     private func makeThreeHoursRegistration() -> ThreeHoursRegistration {
@@ -278,6 +315,11 @@ extension WeatherSummaryViewController {
         snapshot.appendSections(CollectionViewSection.allCases)
         items.forEach { item in
             switch item {
+            case .currentWeather:
+                snapshot.appendItems(
+                    [item],
+                    toSection: .currentWeather
+                )
             case .threeHours:
                 snapshot.appendItems(
                     [item],
@@ -309,10 +351,11 @@ extension WeatherSummaryViewController {
     }
     
     enum CollectionViewSection: CaseIterable {
-        case threeHours, fiveDays, location, weatherConditions
+        case currentWeather, threeHours, fiveDays, location, weatherConditions
     }
     
     enum CollectionViewItem: Hashable {
+        case currentWeather(CurrentWeather)
         case threeHours(ThreeHourForecast)
         case fiveDays(FiveDayForecast)
         case location(WeatherLocationInfo)
@@ -326,6 +369,9 @@ extension WeatherSummaryViewController {
     typealias Snapshot =
     NSDiffableDataSourceSnapshot<CollectionViewSection, CollectionViewItem>
     
+    typealias CurrentWeatherRegistration =
+    UICollectionView.CellRegistration
+    <CurrentWeatherCVCell, CollectionViewItem>
     typealias ThreeHoursRegistration =
     UICollectionView.CellRegistration
     <ThreeHoursForecastCVCell, CollectionViewItem>

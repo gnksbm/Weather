@@ -15,7 +15,8 @@ extension OpenWeatherLocationEndpoint {
     var queries: [String : String]? {
         [
             "lat": "\(request.latitude)",
-            "lon": "\(request.longitude)"
+            "lon": "\(request.longitude)",
+            "lang": "kr"
         ]
     }
 }

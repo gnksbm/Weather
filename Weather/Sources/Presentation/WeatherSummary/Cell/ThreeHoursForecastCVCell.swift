@@ -48,7 +48,7 @@ final class ThreeHoursForecastCVCell: BaseCollectionViewCell {
                 systemName: "sun.max.trianglebadge.exclamationmark"
             )
         )
-        tempLabel.text = "\(item.temperature.removeDecimal())°"
+        tempLabel.text = item.temperature.toTemperature()
     }
     
     override func configureLayout() {

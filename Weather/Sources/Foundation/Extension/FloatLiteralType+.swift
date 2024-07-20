@@ -8,6 +8,10 @@
 import Foundation
 
 extension FloatLiteralType {
+    func toTemperature() -> String {
+        "\(removeDecimal())°"
+    }
+    
     func removeDecimal(decimalCount: Int = 1) -> CVarArg {
         if self == Self(Int(self)) {
             return Int(self)

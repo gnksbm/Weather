@@ -52,9 +52,8 @@ final class FiveDaysForecastCVCell: BaseCollectionViewCell {
                 systemName: "sun.max.trianglebadge.exclamationmark"
             )
         )
-        let format = "%.1f°"
-        minTempLabel.text = "최저 \(String(format: format, item.minTemperature))"
-        maxTempLabel.text = "최고 \(String(format: format, item.minTemperature))"
+        minTempLabel.text = "최저 \(item.minTemperature.toTemperature())"
+        maxTempLabel.text = "최고 \(item.maxTemperature.toTemperature())"
     }
     
     override func configureLayout() {

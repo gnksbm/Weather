@@ -39,7 +39,7 @@ final class ThreeHoursForecastCVCell: BaseCollectionViewCell {
     }
     
     func configureCell(
-        item: WeatherSummaryViewController.CollectionViewItem.ThreeHourForecast
+        item: ThreeHourForecast
     ) {
         timeLabel.text = item.time.formatted(dateFormat: .onlyTime) + "시"
         imageFetchTask = iconImageView.setImageWithCahe(

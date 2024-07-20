@@ -18,7 +18,7 @@ final class WeatherLocationCVCell: BaseCollectionViewCell {
     
     func configureCell(
         item:
-        WeatherSummaryViewController.CollectionViewItem.WeatherLocationInfo
+        WeatherLocationInfo
     ) {
         let coordinate = CLLocationCoordinate2D(
             latitude: item.latitude,

@@ -43,7 +43,7 @@ final class FiveDaysForecastCVCell: BaseCollectionViewCell {
     }
     
     func configureCell(
-        item: WeatherSummaryViewController.CollectionViewItem.FiveDayForecast
+        item: FiveDayForecast
     ) {
         dayOfWeekLabel.text = item.dayOfWeek
         imageFetchTask = iconImageView.setImageWithCahe(

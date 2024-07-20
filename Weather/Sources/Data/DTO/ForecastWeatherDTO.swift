@@ -20,8 +20,7 @@ extension ForecastWeatherDTO {
     ) -> [WeatherSummaryViewController.CollectionViewItem] {
         list.map { forecast in
             return .threeHours(
-                WeatherSummaryViewController.CollectionViewItem
-                    .ThreeHourForecast(
+                ThreeHourForecast(
                     time: forecast.date,
                     iconRequest: forecast.iconRequest,
                     temperature: forecast.main.temp.kelvinToCelsius()

@@ -31,7 +31,7 @@ extension CurrentWeatherDTO {
     func toLocationItem(
     ) -> WeatherSummaryViewController.CollectionViewItem {
         .location(
-            WeatherSummaryViewController.CollectionViewItem.WeatherLocationInfo(
+            WeatherLocationInfo(
                 latitude: coord.lat,
                 longitude: coord.lon
             )

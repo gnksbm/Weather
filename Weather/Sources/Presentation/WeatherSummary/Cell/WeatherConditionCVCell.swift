@@ -30,7 +30,7 @@ final class WeatherConditionCVCell: BaseCollectionViewCell {
     }
     
     func configureCell(
-        item: WeatherSummaryViewController.CollectionViewItem.WeatherCondition
+        item: WeatherCondition
     ) {
         iconImageView.image = UIImage(systemName: item.iconName)
         titleLabel.text = item.title

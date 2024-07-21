@@ -32,6 +32,8 @@
 		8E768E132C4BD6870062431F /* WeatherCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E122C4BD6870062431F /* WeatherCondition.swift */; };
 		8E768E152C4BD7D00062431F /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E142C4BD7D00062431F /* CurrentWeather.swift */; };
 		8E768E172C4BD92C0062431F /* CurrentWeatherCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E162C4BD92C0062431F /* CurrentWeatherCVCell.swift */; };
+		8E768E1C2C4CF3980062431F /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E1B2C4CF3980062431F /* SearchCityViewController.swift */; };
+		8E768E1F2C4CF3D90062431F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E768E1E2C4CF3D90062431F /* MapViewController.swift */; };
 		BE2AFB0D2C49208D00C6718C /* UITableViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */; };
 		BE2AFB0F2C4920B000C6718C /* UICollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */; };
 		BE2AFB112C49224B00C6718C /* UIKit+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2AFB102C49224B00C6718C /* UIKit+Combine.swift */; };
@@ -114,6 +116,8 @@
 		8E768E122C4BD6870062431F /* WeatherCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCondition.swift; sourceTree = "<group>"; };
 		8E768E142C4BD7D00062431F /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		8E768E162C4BD92C0062431F /* CurrentWeatherCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCVCell.swift; sourceTree = "<group>"; };
+		8E768E1B2C4CF3980062431F /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
+		8E768E1E2C4CF3D90062431F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BE2AFB0C2C49208D00C6718C /* UITableViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewDelegateProxy.swift; sourceTree = "<group>"; };
 		BE2AFB0E2C4920B000C6718C /* UICollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		BE2AFB102C49224B00C6718C /* UIKit+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Combine.swift"; sourceTree = "<group>"; };
@@ -270,6 +274,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8E768E1A2C4CF3880062431F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8E768E1B2C4CF3980062431F /* SearchCityViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		8E768E1D2C4CF3C20062431F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				8E768E1E2C4CF3D90062431F /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		BEC239C42C4503C40086B797 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +327,8 @@
 			children = (
 				8E768E002C47F0C60062431F /* Common */,
 				8E768DF82C47CF870062431F /* WeatherSummary */,
+				8E768E1A2C4CF3880062431F /* Search */,
+				8E768E1D2C4CF3C20062431F /* Map */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -586,6 +608,7 @@
 				8E768DEC2C47CB4D0062431F /* CombineControlCompatible.swift in Sources */,
 				BEC23A4F2C4556720086B797 /* WeatherConditionCVCell.swift in Sources */,
 				BEC23A392C4519250086B797 /* CurrentWeatherDTO.swift in Sources */,
+				8E768E1F2C4CF3D90062431F /* MapViewController.swift in Sources */,
 				BEC23A1A2C45131B0086B797 /* ViewModel.swift in Sources */,
 				8E768DFF2C47F0A00062431F /* UIViewController+.swift in Sources */,
 				BEC23A222C45131B0086B797 /* EndpointRepresentable.swift in Sources */,
@@ -599,6 +622,7 @@
 				BEC23A772C4686380086B797 /* WTDesign.swift in Sources */,
 				BEC23A692C467F340086B797 /* CacheStorage.swift in Sources */,
 				8E768E172C4BD92C0062431F /* CurrentWeatherCVCell.swift in Sources */,
+				8E768E1C2C4CF3980062431F /* SearchCityViewController.swift in Sources */,
 				8E768E082C4BC6790062431F /* Collection+.swift in Sources */,
 				BEC23A1F2C45131B0086B797 /* BaseViewController.swift in Sources */,
 				BEC23A302C45178D0086B797 /* ForecastWeatherEndpoint.swift in Sources */,

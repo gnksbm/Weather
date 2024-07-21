@@ -19,7 +19,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let rootVC = WeatherSummaryViewController()
         rootVC.viewModel = WeatherSummaryViewModel()
-        window?.rootViewController = rootVC
+        window?.rootViewController = UINavigationController(
+            rootViewController: rootVC
+        )
         window?.makeKeyAndVisible()
     }
     

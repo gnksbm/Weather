@@ -23,6 +23,16 @@ class WeatherSummaryViewController: BaseViewController, View {
         $0.showsVerticalScrollIndicator(false)
     }
     
+    private let mapButton = UIButton().nt.configure {
+        $0.setImage(UIImage(systemName: "map"), for: .normal)
+            .tintColor(.label)
+    }
+    
+    private let listButton = UIButton().nt.configure {
+        $0.setImage(UIImage(systemName: "list.bullet"), for: .normal)
+            .tintColor(.label)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataSource()
@@ -37,14 +47,11 @@ class WeatherSummaryViewController: BaseViewController, View {
     func bind(viewModel: WeatherSummaryViewModel) {
         let output = viewModel.transform(
             input: WeatherSummaryViewModel.Input(
-                viewWillAppearEvent: viewWillAppearEvent
+                viewWillAppearEvent: viewWillAppearEvent,
+                mapButtonTapEvent: mapButton.tapEvent,
+                listButtonTapEvent: listButton.tapEvent
             )
         )
-        
-        collectionView.didSelectItemEvent.sink {
-            print($0)
-        }
-        .store(in: &cancelBag)
         
         output.collectionViewItem
             .withUnretained(self)
@@ -75,6 +82,39 @@ class WeatherSummaryViewController: BaseViewController, View {
                 vc.showToast(message: "네트워크 오류")
             }
             .store(in: &cancelBag)
+        
+        output.startMapFlow
+            .withUnretained(self)
+            .sink { vc, _ in
+                vc.navigationController?.pushViewController(
+                    MapViewController(),
+                    animated: true
+                )
+            }
+            .store(in: &cancelBag)
+        
+        output.startListFlow
+            .withUnretained(self)
+            .sink { vc, _ in
+                vc.navigationController?.pushViewController(
+                    SearchCityViewController(),
+                    animated: true
+                )
+            }
+            .store(in: &cancelBag)
+    }
+    
+    override func configureUI() {
+        toolbarItems = [
+            UIBarButtonItem(customView: mapButton),
+            UIBarButtonItem(
+                barButtonSystemItem: .flexibleSpace,
+                target: nil,
+                action: nil
+            ),
+            UIBarButtonItem(customView: listButton)
+        ]
+        navigationController?.isToolbarHidden = false
     }
     
     override func configureLayout() {

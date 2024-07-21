@@ -21,7 +21,9 @@ final class WeatherSummaryViewModel: ViewModel {
             <[WeatherSummaryViewController.CollectionViewItem], Never>(),
             locationFailure: PassthroughSubject
             <LocationServiceError, Never>(),
-            networkingFailure: PassthroughSubject<Error, Never>()
+            networkingFailure: PassthroughSubject<Error, Never>(),
+            startMapFlow: PassthroughSubject<Void, Never>(),
+            startListFlow: PassthroughSubject<Void, Never>()
         )
         
         input.viewWillAppearEvent
@@ -65,6 +67,18 @@ final class WeatherSummaryViewModel: ViewModel {
             }
             .store(in: &cancelBag)
 
+        input.mapButtonTapEvent
+            .sink { _ in
+                output.startMapFlow.send(())
+            }
+            .store(in: &cancelBag)
+        
+        input.listButtonTapEvent
+            .sink { _ in
+                output.startListFlow.send(())
+            }
+            .store(in: &cancelBag)
+        
         return output
     }
 }
@@ -72,6 +86,8 @@ final class WeatherSummaryViewModel: ViewModel {
 extension WeatherSummaryViewModel {
     struct Input { 
         let viewWillAppearEvent: PassthroughSubject<Void, Never>
+        let mapButtonTapEvent: AnyPublisher<Void, Never>
+        let listButtonTapEvent: AnyPublisher<Void, Never>
     }
     
     struct Output {
@@ -79,5 +95,7 @@ extension WeatherSummaryViewModel {
         <[WeatherSummaryViewController.CollectionViewItem], Never>
         let locationFailure: PassthroughSubject<LocationServiceError, Never>
         let networkingFailure: PassthroughSubject<Error, Never>
+        let startMapFlow: PassthroughSubject<Void, Never>
+        let startListFlow: PassthroughSubject<Void, Never>
     }
 }

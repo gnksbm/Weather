@@ -96,8 +96,10 @@ class WeatherSummaryViewController: BaseViewController, View {
         output.startListFlow
             .withUnretained(self)
             .sink { vc, _ in
+                let searchVC = SearchCityViewController()
+                searchVC.viewModel = SearchCityViewModel()
                 vc.navigationController?.pushViewController(
-                    SearchCityViewController(),
+                    searchVC,
                     animated: true
                 )
             }

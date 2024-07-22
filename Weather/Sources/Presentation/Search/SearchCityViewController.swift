@@ -16,6 +16,8 @@ final class SearchCityViewController: BaseViewController, View {
     
     private let collectionView = SearchCityCollectionView()
     
+    private let searchController = UISearchController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDidLoadEvent.send(())
@@ -25,6 +27,8 @@ final class SearchCityViewController: BaseViewController, View {
         let output = viewModel.transform(
             input: SearchCityViewModel.Input(
                 viewDidLoadEvent: viewDidLoadEvent.eraseToAnyPublisher(),
+                searchTextChangeEvent: searchController.searchBar
+                    .searchTextField.textChangeEvent,
                 itemSelectEvent: collectionView.didSelectItemEvent
                     .withUnretained(self)
                     .map { vc, indexPath in
@@ -34,12 +38,16 @@ final class SearchCityViewController: BaseViewController, View {
             )
         )
         
-        output.dataList
+        output.cityList
             .withUnretained(self)
             .sink { vc, dataList in
                 vc.collectionView.updateSnapshot(items: dataList)
             }
             .store(in: &cancelBag)
+    }
+    
+    override func configureNavigation() {
+        navigationController?.navigationItem.searchController = searchController
     }
     
     override func configureLayout() {

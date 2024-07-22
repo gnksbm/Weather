@@ -11,15 +11,17 @@ import Foundation
 import Alamofire
 
 final class SearchCityViewModel: ViewModel {
+    private let cityRepository = CityRepository.shared
+    
     private var cancelBag = CancelBag()
     
     func transform(input: Input) -> Output {
-        let output = Output(dataList: PassthroughSubject<[String], Never>())
+        let output = Output(cityList: PassthroughSubject<[City], Never>())
         
         input.viewDidLoadEvent
             .withUnretained(self)
             .sink { vm, _ in
-                
+                output.cityList.send(vm.cityRepository.fetchCityList())
             }
             .store(in: &cancelBag)
         
@@ -36,10 +38,11 @@ final class SearchCityViewModel: ViewModel {
 extension SearchCityViewModel {
     struct Input { 
         let viewDidLoadEvent: AnyPublisher<Void, Never>
-        let itemSelectEvent: AnyPublisher<String, Never>
+        let searchTextChangeEvent: AnyPublisher<String, Never>
+        let itemSelectEvent: AnyPublisher<City, Never>
     }
     
     struct Output {
-        let dataList: PassthroughSubject<[String], Never>
+        let cityList: PassthroughSubject<[City], Never>
     }
 }

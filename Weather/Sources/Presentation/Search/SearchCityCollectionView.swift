@@ -20,7 +20,7 @@ final class SearchCityCollectionView: BaseCollectionView {
         configureDataSource()
     }
     
-    func updateSnapshot(items: [String]) {
+    func updateSnapshot(items: [City]) {
         var snapshot = Snapshot()
         let allSection = CollectionViewSection.allCases
         snapshot.appendSections(allSection)
@@ -33,7 +33,7 @@ final class SearchCityCollectionView: BaseCollectionView {
         diffableDataSource.apply(snapshot)
     }
     
-    func getItem(indexPath: IndexPath) -> String {
+    func getItem(indexPath: IndexPath) -> City {
         diffableDataSource
             .snapshot(for: CollectionViewSection.allCases[indexPath.section])
             .items[indexPath.row]
@@ -55,7 +55,7 @@ final class SearchCityCollectionView: BaseCollectionView {
     private func makeCellRegistration() -> CellRegistration {
         CellRegistration { cell, indexPath, item in
             var config = UIListContentConfiguration.cell()
-            config.text = item
+            config.text = item.name
             cell.contentConfiguration = config
         }
     }
@@ -67,11 +67,11 @@ extension SearchCityCollectionView {
     }
     
     typealias DataSource =
-    UICollectionViewDiffableDataSource<CollectionViewSection, String>
+    UICollectionViewDiffableDataSource<CollectionViewSection, City>
     
     typealias Snapshot =
-    NSDiffableDataSourceSnapshot<CollectionViewSection, String>
+    NSDiffableDataSourceSnapshot<CollectionViewSection, City>
     
     typealias CellRegistration =
-    UICollectionView.CellRegistration<UICollectionViewCell, String>
+    UICollectionView.CellRegistration<UICollectionViewCell, City>
 }
